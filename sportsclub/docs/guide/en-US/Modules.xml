@@ -160,6 +160,25 @@
               logic, which is injected into the JBoss WS-deployed
               services.</entry>
             </row>
+
+            <row>
+              <entry>Web Flow</entry>
+
+              <entry>Conversation-oriented web application</entry>
+
+              <entry>The application uses Spring Web Flow for defining a
+              conversational process for creating a reservation</entry>
+            </row>
+
+            <row>
+              <entry>Security</entry>
+
+              <entry>Application-server pre-authentication</entry>
+
+              <entry>The application uses Spring Security for authorizing
+              access to resources. Authentication is provided by the
+              application server.</entry>
+            </row>
           </tbody>
         </tgroup>
       </table></para>
@@ -462,7 +481,7 @@ public class TestJpaAccountRepository
       straightforward Spring configuration, we will non insist any more on
       this topic, except for outlining that this is the level where
       transaction demarcation is provided by the use of the appropriate Spring
-      annotations. </para>
+      annotations.</para>
     </section>
 
     <section>
@@ -559,7 +578,7 @@ public class BillingServiceImpl implements BillingService
 
       <para>The Subscriptions application uses Richfaces and JSF for the
       presentation layer and EJB for the business layer, so this part of the
-      application is not Spring-related. </para>
+      application is not Spring-related.</para>
 
       <para>Although this is somewhat out of the Spring topic, it is worth
       mentioning for the benefit of the reader that we recommend using Seam
@@ -875,7 +894,7 @@ public class AccountController
       order to allow it to run in environments that dot have a message broker,
       like for example the Web Profile of JBoss Application Server. For
       details on how to do that, please consult section 1.1 of the current
-      guide. </para>
+      guide.</para>
 
       <para>Besides displaying the current status of invoices and payments for
       a given account and generating invoices through the web interface, the
@@ -916,7 +935,7 @@ public class AccountController
       the processing. The PaymentProcessor instance injected into the
       PaymentNotificationProcessor is, in fact, reused by the
       PaymentNotificationService web service implementation (whose contract
-      does not depend on the PaymentNotification entity). </para>
+      does not depend on the PaymentNotification entity).</para>
 
       <para>The arrival of messages and their processing can be traced by
       examining the application log.</para>
@@ -1080,7 +1099,7 @@ public class PaymentAuditor
       auditor.</para>
 
       <para>As explained in the JMS section, a separate MBean is set up for
-      setting messages to the payment notifications message queue. </para>
+      setting messages to the payment notifications message queue.</para>
     </section>
 
     <section>

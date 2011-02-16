@@ -17,85 +17,84 @@
     <para>The Sportsclub example consists of three different applications
     sharing the same domain model, packaged and deployed together. This is
     done for simplicity reasons, but also for demonstrating a few different
-    technologies and configuration options working side by side. </para>
+    technologies and configuration options working side by side.</para>
 
     <para>The business domain of the application is a Sports Club. The
     employees of the club need to be able to perform the following
     scenarios:</para>
 
     <itemizedlist>
-        <listitem>
-          <para>maintaining informations about the subscribers, creating new
-          subcriptions and closing existing accounts;</para>
-        </listitem>
+      <listitem>
+        <para>maintaining informations about the subscribers, creating new
+        subcriptions and closing existing accounts;</para>
+      </listitem>
 
-        <listitem>
-          <para>creating, modifying and removing equipment reservations for
-          subscribers;</para>
-        </listitem>
+      <listitem>
+        <para>creating, modifying and removing equipment reservations for
+        subscribers;</para>
+      </listitem>
 
-        <listitem>
-          <para>viewing the current balance of an account, issuing invoices
-          for accounts that do not have a current invoice and updating the
-          account whenever a payment has been received.</para>
-        </listitem>
-      </itemizedlist>
+      <listitem>
+        <para>viewing the current balance of an account, issuing invoices for
+        accounts that do not have a current invoice and updating the account
+        whenever a payment has been received.</para>
+      </listitem>
+    </itemizedlist>
 
-    <para>As the concerns are different, we have three different
-    applications, each covering one piece of functionality.</para>
+    <para>As the concerns are different, we have three different applications,
+    each covering one piece of functionality.</para>
 
     <para>Each of these scenarios is covered by a separate web application,
     and all three applications are packaged in a single EAR file.</para>
 
-    <para>The Reservations application is using the following
-    stack:</para>
-    <itemizedlist>
-        <listitem>
-          <para>UI layer implemented using Richfaces</para>
-        </listitem>
+    <para>The Reservations application is using the following stack:</para>
 
-<!-- Not sure what this is doing here...
+    <itemizedlist>
+      <listitem>
+        <para>UI layer implemented using Richfaces</para>
+      </listitem>
+
+      <!-- Not sure what this is doing here...
 
     <figure>
       <title>Structure of the Sportsclub application</title>-->
 
-        <listitem>
-          <para>Persistence layer using Spring-based DAOs
-          (Hibernate/JPA)</para>
-        </listitem>
-      </itemizedlist>
+      <listitem>
+        <para>Persistence layer using Spring-based DAOs (Hibernate/JPA)</para>
+      </listitem>
+    </itemizedlist>
 
-    <para>The Subscriptions application is using the following
-    stack:</para>
+    <para>The Subscriptions application is using the following stack:</para>
 
     <para>All three applications share a common domain model and a common
     DAO/repository layer, implemented using Spring. The application includes
     both Hibernate and JPA implementations for the repository layer (using the
     Hibernate and JPA support provided by JBoss AS, respectively). The
     application is built in two different variants, each using one of the two
-    DAO implementation alternatives. </para>
+    DAO implementation alternatives.</para>
 
     <para>Apart from that, each web application uses a different combination
     of technologies, illustrating one or more integration use cases.</para>
 
     <para>The Subscriptions application uses an EJB-based service layer and a
-    JSF-based front-end, using Richfaces components. </para>
+    JSF-based front-end, using Richfaces components.</para>
 
     <para>The Invoicing application is using the following stack:</para>
+
     <itemizedlist>
-        <listitem>
-          <para>UI layer implemented using Spring MVC and JSP</para>
-        </listitem>
+      <listitem>
+        <para>UI layer implemented using Spring MVC and JSP</para>
+      </listitem>
 
-        <listitem>
-          <para>Business layer implemented using EJB</para>
-        </listitem>
+      <listitem>
+        <para>Business layer implemented using EJB</para>
+      </listitem>
 
-        <listitem>
-          <para>Persistence layer implemented using Spring-based DAOs
-          (Hibernate/JPA)</para>
-        </listitem>
-      </itemizedlist>
+      <listitem>
+        <para>Persistence layer implemented using Spring-based DAOs
+        (Hibernate/JPA)</para>
+      </listitem>
+    </itemizedlist>
 
     <para>In all three cases, the persistence layer is implemented using
     Spring. In fact there are two alternative implementations: one using
@@ -109,146 +108,154 @@
 
     <para>The modules (Maven artifacts) of the project are outlined in the
     following table:</para>
+
     <table>
-        <title>Modules of the Sportsclub project</title>
+      <title>Modules of the Sportsclub project</title>
 
-        <tgroup cols="3">
-          <colspec colname="module-name" />
+      <tgroup cols="3">
+        <colspec colname="module-name" />
 
-          <colspec colname="module-description" />
+        <colspec colname="module-description" />
 
-          <colspec align="center" colname="module-type" />
+        <colspec align="center" colname="module-type" />
 
-          <thead>
-            <row>
-              <entry align="center">Maven Module</entry>
+        <thead>
+          <row>
+            <entry align="center">Maven Module</entry>
 
-              <entry align="center">Functionality</entry>
+            <entry align="center">Functionality</entry>
 
-              <entry>Module Type</entry>
-            </row>
-          </thead>
+            <entry>Module Type</entry>
+          </row>
+        </thead>
 
-          <tbody>
-            <row>
-              <entry>snowdrop-domain</entry>
+        <tbody>
+          <row>
+            <entry>snowdrop-domain</entry>
 
-              <entry>Domain classes and repository interfaces.</entry>
+            <entry>Domain classes and repository interfaces.</entry>
 
-              <entry>jar</entry>
-            </row>
+            <entry>jar</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-hibernate-dao</entry>
+          <row>
+            <entry>sportsclub-hibernate-dao</entry>
 
-              <entry>Hibernate implementations for repositories and Spring
-              bean definitions using them.</entry>
+            <entry>Hibernate implementations for repositories and Spring bean
+            definitions using them.</entry>
 
-              <entry>jar</entry>
-            </row>
+            <entry>jar</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-jpa-dao</entry>
+          <row>
+            <entry>sportsclub-jpa-dao</entry>
 
-              <entry>JPA implementations for repositories and Spring bean
-              definitions using them.</entry>
+            <entry>JPA implementations for repositories and Spring bean
+            definitions using them.</entry>
 
-              <entry>jar</entry>
-            </row>
+            <entry>jar</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-invoicing-ejb</entry>
+          <row>
+            <entry>sportsclub-invoicing-ejb</entry>
 
-              <entry>Business logic for the Invoicing application</entry>
+            <entry>Business logic for the Invoicing application</entry>
 
-              <entrytbl cols="1">
-                <tbody>
-                  <row>
-                    <entry>ejb</entry>
-                  </row>
-                </tbody>
-              </entrytbl>
-            </row>
+            <entrytbl cols="1">
+              <tbody>
+                <row>
+                  <entry>ejb</entry>
+                </row>
+              </tbody>
+            </entrytbl>
+          </row>
 
-            <row>
-              <entry>sportsclub-reservations-spring</entry>
+          <row>
+            <entry>sportsclub-reservations-spring</entry>
 
-              <entry>Business logic for the Reservations application</entry>
+            <entry>Business logic for the Reservations application</entry>
 
-              <entry>jar</entry>
-            </row>
+            <entry>jar</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-subscriptions-ejb</entry>
+          <row>
+            <entry>sportsclub-subscriptions-ejb</entry>
 
-              <entry>Business logic for the Subscriptions application</entry>
+            <entry>Business logic for the Subscriptions application</entry>
 
-              <entry>ejb</entry>
-            </row>
+            <entry>ejb</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-invoicing-webmvc</entry>
+          <row>
+            <entry>sportsclub-invoicing-webmvc</entry>
 
-              <entry>UI layer for the Invoicing application. Includes
-              processing of JMS messages via Spring (for payment
-              notifications)</entry>
+            <entry>UI layer for the Invoicing application. Includes processing
+            of JMS messages via Spring (for payment notifications)</entry>
 
-              <entry>war</entry>
-            </row>
+            <entry>war</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-reservations-web</entry>
+          <row>
+            <entry>sportsclub-reservations-web</entry>
 
-              <entry>UI layer for the Reservations application.</entry>
+            <entry>UI layer for the Reservations application.</entry>
 
-              <entry>war</entry>
-            </row>
+            <entry>war</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-subscriptions-web</entry>
+          <row>
+            <entry>sportsclub-reservations-webflow</entry>
 
-              <entry>UI layer for the Subscriptions application</entry>
+            <entry>Spring-WebFlow based layer for the Reservations
+            application</entry>
 
-              <entry>war</entry>
-            </row>
+            <entry>war</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-ear</entry>
+          <row>
+            <entry>sportsclub-subscriptions-web</entry>
 
-              <entry>EAR aggregator module using the Hibernate-based
-              implementation</entry>
+            <entry>UI layer for the Subscriptions application</entry>
 
-              <entry>ear</entry>
-            </row>
+            <entry>war</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-jpa-ear</entry>
+          <row>
+            <entry>sportsclub-ear</entry>
 
-              <entry>EAR aggregator module using the JPA-based
-              implementation</entry>
+            <entry>EAR aggregator module using the Hibernate-based
+            implementation</entry>
 
-              <entry>ear</entry>
-            </row>
+            <entry>ear</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-staticwebcontent</entry>
+          <row>
+            <entry>sportsclub-jpa-ear</entry>
 
-              <entry>Static web content for the application (not deployed
-              separately, but included at build-time in the web
-              layers)</entry>
+            <entry>EAR aggregator module using the JPA-based
+            implementation</entry>
 
-              <entry>war</entry>
-            </row>
+            <entry>ear</entry>
+          </row>
 
-            <row>
-              <entry>sportsclub-test-infrastructure</entry>
+          <row>
+            <entry>sportsclub-staticwebcontent</entry>
 
-              <entry>Infrastructure module for unit testing</entry>
+            <entry>Static web content for the application (not deployed
+            separately, but included at build-time in the web layers)</entry>
 
-              <entry>jar</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
+            <entry>war</entry>
+          </row>
+
+          <row>
+            <entry>sportsclub-test-infrastructure</entry>
+
+            <entry>Infrastructure module for unit testing</entry>
+
+            <entry>jar</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
   </section>
 </chapter>
