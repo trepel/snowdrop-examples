@@ -22,6 +22,9 @@
 
     <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
         <property name="flowExecutor" ref="flowExecutor"/>
+        <property name="ajaxHandler">
+            <bean class="org.springframework.faces.richfaces.RichFacesAjaxHandler"/>
+        </property>
     </bean>
     <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
         <property name="flowRegistry" ref="flowRegistry"/>

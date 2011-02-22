@@ -5,14 +5,20 @@
                 xmlns:rich="http://richfaces.org/rich"
                 xmlns:a4j="http://richfaces.org/a4j">
     <rich:panel>
-        
+
         <h:outputText value="Sports Club Reservations"/>
 
     </rich:panel>
-    <h:form>
         <rich:toolBar>
-            <rich:menuItem value="Create" action="create"/>
-            <rich:menuItem value="Search" action="search"/>
+            <rich:menuItem submitMode="none">
+                <h:outputLink value="${request.contextPath}/flow/reservation">
+                    <h:outputText value="Create"/>
+                </h:outputLink>
+            </rich:menuItem>
+            <rich:menuItem submitMode="none">
+                <h:outputLink value="${request.contextPath}/flow/search">
+                    <h:outputText value="Search"/>
+                </h:outputLink>
+            </rich:menuItem>
         </rich:toolBar>
-    </h:form>
 </ui:composition>

@@ -7,6 +7,7 @@
 		<transition on="byEquipmentType" to="selectEquipment" />
 		<transition on="byAccount" to="selectAccount" />
 	</view-state>
+
 	<view-state id="chooseDate" redirect="false" popup="false">
 		<transition on="*" to="finishReservation" />
 	</view-state>
@@ -21,6 +22,7 @@
 		<transition on="next" to="chooseDate" bind="false" />
 		<transition on="previous" to="beginReservation" bind="false" />
 	</view-state>
-	<end-state id="finishReservation" commit="false" />
+
+	<end-state id="finishReservation" commit="false"  view="searchReservation"/>
 
 </flow>
