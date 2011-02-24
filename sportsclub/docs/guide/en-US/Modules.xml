@@ -717,6 +717,12 @@ public class BillingServiceImpl implements BillingService
     </section>
 
     <section>
+      <title>Conversation-based Reservations</title>
+
+      <para></para>
+    </section>
+
+    <section>
       <title>Invoicing: Spring MVC and EJB</title>
 
       <para>The Invoicing application provides another example of
@@ -842,6 +848,13 @@ public class AccountController
       contains a number of business services that are using Spring. They do
       not play any role in the Spring MVC/EJB integration, and we will discuss
       more about them in section 6.</para>
+    </section>
+
+    <section>
+      <title>Invoicing: JBoss-preauthenticated security</title>
+
+      <para>The invoicing module also illustrates the usage of JBoss-based
+      preauthentication and interaction with Spring security.</para>
     </section>
 
     <section>
