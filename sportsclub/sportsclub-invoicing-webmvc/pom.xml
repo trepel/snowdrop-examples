@@ -88,6 +88,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.jboss.snowdrop</groupId>
+            <artifactId>snowdrop-namespace</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.jboss.javaee</groupId>
             <artifactId>jboss-ejb-api</artifactId>
             <scope>provided</scope>
