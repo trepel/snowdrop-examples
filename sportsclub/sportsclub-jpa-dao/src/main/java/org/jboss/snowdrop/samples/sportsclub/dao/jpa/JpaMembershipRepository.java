@@ -33,6 +33,7 @@ public class JpaMembershipRepository extends JpaRepository<Membership, String> i
       return (Long) query.getSingleResult();
    }
 
+   @SuppressWarnings("unchecked")
    public List<String> findAllMembershipCodes()
    {
       Query query = entityManager.createQuery("SELECT m.code FROM " + Membership.class.getSimpleName() + " m WHERE m.active = :active");
