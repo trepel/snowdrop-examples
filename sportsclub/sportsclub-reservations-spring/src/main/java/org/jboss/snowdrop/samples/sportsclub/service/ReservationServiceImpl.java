@@ -1,12 +1,13 @@
 package org.jboss.snowdrop.samples.sportsclub.service;
 
+import static org.jboss.snowdrop.samples.sportsclub.service.CriteriaUtils.createReservationSearchCriteria;
+
 import java.util.Date;
 import java.util.List;
 
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.EquipmentType;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Reservation;
 import org.jboss.snowdrop.samples.sportsclub.domain.repository.ReservationRepository;
-import org.jboss.snowdrop.samples.sportsclub.domain.repository.criteria.Range;
 import org.jboss.snowdrop.samples.sportsclub.domain.repository.criteria.ReservationSearchCriteria;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,18 +22,7 @@ public class ReservationServiceImpl implements ReservationService
 
    public List<Reservation> getReservations(Date fromDate, Date toDate, Integer min, Integer max, List<EquipmentType> types)
    {
-      ReservationSearchCriteria criteria = new ReservationSearchCriteria();
-      criteria.setFromDate(fromDate);
-      criteria.setToDate(toDate);
-      if (min != null && max != null)
-      {
-         Range range = new Range(min, max);
-         criteria.setRange(range);
-      }
-      if (types != null && types.size() > 0)
-      {
-         criteria.setEquipmentType(types);
-      }
+      ReservationSearchCriteria criteria = createReservationSearchCriteria(fromDate, toDate, min, max, types);
       return reservationRepository.getByCriteria(criteria);
    }
 

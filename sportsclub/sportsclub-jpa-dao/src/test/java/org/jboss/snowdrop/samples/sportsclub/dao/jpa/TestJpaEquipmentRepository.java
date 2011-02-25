@@ -1,5 +1,6 @@
 package org.jboss.snowdrop.samples.sportsclub.dao.jpa;
 
+import org.jboss.snowdrop.samples.sportsclub.domain.repository.criteria.ReservationSearchCriteria;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,10 @@ import org.jboss.snowdrop.samples.sportsclub.domain.repository.criteria.Range;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.EquipmentType;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Equipment;
 
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author <a href="mailto:lvlcek@redhat.com">Lukas Vlcek</a>
@@ -40,5 +44,41 @@ public class TestJpaEquipmentRepository
       criteria.setRange(new Range(1,3));
       Collection<Equipment> equipments =  equipmentRepository.findByCriteria(criteria);
       Assert.assertEquals(3, equipments.size());
+   }
+
+   @Test
+   public void testSearchUnreserved()
+   {
+      Date from = getDate(2009, 1, 1);
+      Date to = getDate(2009, 12, 31);
+
+      ReservationSearchCriteria criteria = new ReservationSearchCriteria();
+      criteria.setFromDate(from);
+      criteria.setToDate(to);
+
+      Collection<Equipment> equipments =  equipmentRepository.findUnreserved(criteria);
+      Assert.assertEquals(1, equipments.size());
+   }
+
+   @Test
+   public void testCountUnreserved()
+   {
+      Date from = getDate(2009, 1, 1);
+      Date to = getDate(2009, 12, 31);
+
+      ReservationSearchCriteria criteria = new ReservationSearchCriteria();
+      criteria.setFromDate(from);
+      criteria.setToDate(to);
+
+      long count =  equipmentRepository.countUnreserved(criteria);
+      Assert.assertEquals(1l, count);
+   }
+
+   private Date getDate(int year, int month, int day)
+   {
+      Calendar cal = Calendar.getInstance(Locale.US);
+      cal.clear();
+      cal.set(year, month - 1, day);
+      return cal.getTime();
    }
 }

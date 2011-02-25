@@ -69,4 +69,5 @@ public abstract class HibernateRepository<T, I extends Serializable> implements 
    {
       return criteria.setFirstResult(range.getMinIndex()).setMaxResults(range.length());
    }
+
 }
