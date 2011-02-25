@@ -1,5 +1,6 @@
 package org.jboss.snowdrop.samples.sportsclub.domain.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
@@ -9,7 +10,7 @@ import javax.persistence.Id;
  * @author <a href="mailto:mariusb@redhat.com">Marius Bogoevici</a>
  */
 @Entity
-public class Membership
+public class Membership implements Serializable
 {
 
    @Id

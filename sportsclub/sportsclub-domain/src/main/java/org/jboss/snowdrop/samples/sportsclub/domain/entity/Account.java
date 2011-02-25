@@ -1,5 +1,6 @@
 package org.jboss.snowdrop.samples.sportsclub.domain.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Calendar;
@@ -21,7 +22,7 @@ import org.jboss.snowdrop.samples.sportsclub.utils.DateUtils;
  * @author <a href="mailto:mariusb@redhat.com">Marius Bogoevici</a>
  */
 @Entity
-public class Account
+public class Account implements Serializable
 {
    @Id
    @GeneratedValue

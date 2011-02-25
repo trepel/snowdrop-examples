@@ -1,9 +1,11 @@
 package org.jboss.snowdrop.samples.sportsclub.domain.entity;
 
+import java.io.Serializable;
+
 /**
  * @author <a href="mailto:mariusb@redhat.com">Marius Bogoevici</a>
  */
-public enum BillingType
+public enum BillingType implements Serializable
 {
    MONTHLY(12),
 

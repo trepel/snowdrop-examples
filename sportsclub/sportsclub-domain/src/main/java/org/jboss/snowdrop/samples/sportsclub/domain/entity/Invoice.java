@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -11,7 +13,7 @@ import java.util.Date;
  * @author <a href="mailto:mariusb@redhat.com">Marius Bogoevici</a>
  */
 @Entity
-public class Invoice
+public class Invoice implements Serializable
 {
 
    @Id @GeneratedValue

@@ -1,5 +1,6 @@
 package org.jboss.snowdrop.samples.sportsclub.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.persistence.ManyToOne;
  */
 
 @Entity
-public class Reservation
+public class Reservation implements Serializable
 {
 
    @Id @GeneratedValue

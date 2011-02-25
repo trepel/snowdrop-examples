@@ -1,5 +1,7 @@
 package org.jboss.snowdrop.samples.sportsclub.domain.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.OneToOne;
  * @author <a href="mailto:mariusb@redhat.com">Marius Bogoevici</a>
  */
 @Entity
-public class Person
+public class Person implements Serializable
 {
    @Id
    @GeneratedValue

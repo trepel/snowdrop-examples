@@ -1,5 +1,7 @@
 package org.jboss.snowdrop.samples.sportsclub.domain.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Embeddable;
 
@@ -7,7 +9,7 @@ import javax.persistence.Embeddable;
  * @author <a href="mailto:mariusb@redhat.com">Marius Bogoevici</a>
  */
 @Embeddable
-public class Name
+public class Name implements Serializable
 {
 
    @Basic

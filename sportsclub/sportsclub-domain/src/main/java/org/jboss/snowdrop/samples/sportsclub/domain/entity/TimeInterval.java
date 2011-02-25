@@ -1,5 +1,6 @@
 package org.jboss.snowdrop.samples.sportsclub.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -11,7 +12,7 @@ import org.jboss.snowdrop.samples.sportsclub.utils.DateUtils;
  * @author Marius Bogoevici
  */
 @Embeddable
-public class TimeInterval
+public class TimeInterval implements Serializable
 {
    public static final TimeZone TIME_ZONE = TimeZone.getTimeZone("EST");
 

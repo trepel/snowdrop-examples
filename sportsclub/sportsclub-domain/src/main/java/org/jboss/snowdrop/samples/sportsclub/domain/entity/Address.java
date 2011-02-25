@@ -1,12 +1,14 @@
 package org.jboss.snowdrop.samples.sportsclub.domain.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 /**
  * @author <a href="mailto:mariusb@redhat.com">Marius Bogoevici</a>
  */
 @Embeddable
-public class Address
+public class Address implements Serializable
 {
 
    private String streetAddress;
