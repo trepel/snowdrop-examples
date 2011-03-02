@@ -14,6 +14,8 @@ import org.jboss.snowdrop.samples.sportsclub.domain.entity.Equipment;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Reservation;
 import org.jboss.snowdrop.samples.sportsclub.service.AccountService;
 import org.jboss.snowdrop.samples.sportsclub.service.ReservationService;
+import org.richfaces.model.selection.Selection;
+import org.richfaces.model.selection.SimpleSelection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -56,6 +58,28 @@ public class ReservationCreate
       {
          return reservationService.loadReservation(reservationId);
       }
+   }
+
+   public Selection selectAccount(Reservation r)
+   {
+      if (r == null || r.getAccount() == null)
+      {
+         return null;
+      }
+      SimpleSelection selection = new SimpleSelection();
+      selection.addKey(r.getAccount().getId());
+      return selection;
+   }
+
+   public Selection selectEquipment(Reservation r)
+   {
+      if (r == null || r.getEquipment() == null)
+      {
+         return null;
+      }
+      SimpleSelection selection = new SimpleSelection();
+      selection.addKey(r.getEquipment().getId());
+      return selection;
    }
 
 

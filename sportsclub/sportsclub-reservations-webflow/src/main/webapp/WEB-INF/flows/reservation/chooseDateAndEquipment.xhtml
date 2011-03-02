@@ -11,7 +11,7 @@
             <h:outputLabel value="From"/>
             <h:panelGroup>
                 <rich:calendar id="from"
-                               value="#{equipmentFilterCreate.availableFrom}"
+                               value="#{reservation.from}"
                                datePattern="d/M/yy HH:mm"
                                showApplyButton="true"
                                locale="#{reservationCreate.locale}">
@@ -24,7 +24,7 @@
             <h:outputLabel value="To"/>
             <h:panelGroup>
                 <rich:calendar id="to"
-                               value="#{equipmentFilterCreate.availableTo}"
+                               value="#{reservation.to}"
                                datePattern="d/M/yy HH:mm"
                                showApplyButton="true"
                                locale="#{reservationCreate.locale}">
@@ -74,7 +74,7 @@
                                         <h:outputText value="Actions"/>
                                     </f:facet>
                                     <a4j:commandButton id="SelectEquipment" value="Create Reservation" action="next">
-                                        <f:setPropertyActionListener value="#{equipment}" target="#{equipmentFilterCreate.selectedEquipment}"/>
+                                        <f:setPropertyActionListener value="#{equipment}" target="#{reservation.equipment}"/>
                                     </a4j:commandButton>
                                 </rich:column>
 

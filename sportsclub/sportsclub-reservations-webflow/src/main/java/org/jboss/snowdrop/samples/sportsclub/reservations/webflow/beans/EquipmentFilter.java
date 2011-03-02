@@ -3,6 +3,7 @@ package org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans;
 import org.ajax4jsf.model.DataVisitor;
 import org.ajax4jsf.model.Range;
 import org.ajax4jsf.model.SequenceRange;
+import org.jboss.snowdrop.samples.sportsclub.domain.entity.Reservation;
 import org.jboss.snowdrop.samples.sportsclub.service.EquipmentService;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Equipment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,7 @@ public class EquipmentFilter extends AbstractExtendedDataModelHelper implements 
    @Autowired
    private transient EquipmentService equipmentService;
 
-   private Date availableFrom;
-
-   private Date availableTo;
-
-   private Equipment selectedEquipment;
+   private Reservation reservation;
 
    private Map<Long, Equipment> equipmentMap = new HashMap<Long, Equipment>();
 
@@ -44,13 +41,13 @@ public class EquipmentFilter extends AbstractExtendedDataModelHelper implements 
 
    public Long getCurrentRowCount()
    {
-      if (availableFrom == null && availableTo == null)
+      if (reservation.getFrom() == null && reservation.getTo() == null)
       {
          return equipmentService.countAllEquipments();
       }
       else
       {
-         return equipmentService.countUnreservedEquipmentsForRange(availableFrom, availableTo, null);
+         return equipmentService.countUnreservedEquipmentsForRange(reservation.getFrom(), reservation.getTo(), null);
       }
    }
 
@@ -59,13 +56,13 @@ public class EquipmentFilter extends AbstractExtendedDataModelHelper implements 
       int firstResult = ((SequenceRange) range).getFirstRow();
       int maxResults = ((SequenceRange) range).getRows();
       List<Equipment> equipments = null;
-      if (availableFrom == null && availableTo == null)
+      if (reservation.getFrom() == null && reservation.getFrom() == null)
       {
          equipments = (List<Equipment>) equipmentService.getAllEquipments(firstResult, maxResults);
       }
       else
       {
-         equipments = equipmentService.getUnreservedEquipments(availableFrom, availableTo, firstResult, maxResults, null);
+         equipments = equipmentService.getUnreservedEquipments(reservation.getFrom(), reservation.getTo(), firstResult, maxResults, null);
       }
       for (Equipment e : equipments)
       {
@@ -75,35 +72,16 @@ public class EquipmentFilter extends AbstractExtendedDataModelHelper implements 
       }
    }
 
-   public Equipment getSelectedEquipment()
+   public Reservation getReservation()
    {
-      return selectedEquipment;
+      return reservation;
    }
 
-   public void setSelectedEquipment(Equipment selectedEquipment)
+   public void setReservation(Reservation reservation)
    {
-      this.selectedEquipment = selectedEquipment;
+      this.reservation = reservation;
    }
 
-   public Date getAvailableFrom()
-   {
-      return availableFrom;
-   }
-
-   public Date getAvailableTo()
-   {
-      return availableTo;
-   }
-
-   public void setAvailableFrom(Date availableFrom)
-   {
-      this.availableFrom = availableFrom;
-   }
-
-   public void setAvailableTo(Date availableTo)
-   {
-      this.availableTo = availableTo;
-   }
 
    public EquipmentService getEquipmentService()
    {

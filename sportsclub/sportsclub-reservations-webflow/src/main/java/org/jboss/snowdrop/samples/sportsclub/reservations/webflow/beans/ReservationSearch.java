@@ -164,11 +164,13 @@ public class ReservationSearch extends AbstractExtendedDataModelHelper
       }
    }
 
+
+
    public void updateSelectedEquipment()
    {
       if (equipmentFilter.getSelection() != null && equipmentFilter.getSelection().size() > 0)
       {
-         Equipment equipment = equipmentFilter.getSelectedEquipment();
+         Equipment equipment = equipmentFilter.getReservation().getEquipment();
          reservation.setEquipment(equipment);
       } else
       {
