@@ -71,6 +71,7 @@
         <property name="accessDecisionManager" ref="httpRequestAccessDecisionManager"/>
         <property name="securityMetadataSource">
             <sec:filter-invocation-definition-source>
+                <sec:intercept-url pattern="/generateInvoice.do" access="ROLE_ADMIN"/>
                 <sec:intercept-url pattern="/**" access="ROLE_EMPLOYEE"/>
             </sec:filter-invocation-definition-source>
         </property>
@@ -80,4 +81,5 @@
     <bean id="securityContextHolderAwareRequestFilter" class="org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter"/>
 
     <sec:global-method-security secured-annotations="enabled"/>
+
 </beans>
