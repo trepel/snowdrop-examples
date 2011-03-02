@@ -31,7 +31,7 @@
         <property name="order" value="0"/>
     </bean>
 
-    <faces:flow-builder-services id="flowBuilderServices"/>
+    <faces:flow-builder-services id="flowBuilderServices" development="true"/>
 
     <bean id="facesWebFlowListener" class="org.springframework.faces.webflow.FlowFacesContextLifecycleListener"/>
 

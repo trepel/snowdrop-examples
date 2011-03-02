@@ -1,4 +1,4 @@
-package org.jboss.snowdrop.samples.sportsclub.jsf.beans.converter;
+package org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans.converter;
 
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.EquipmentType;
 

@@ -1,4 +1,4 @@
-package org.jboss.snowdrop.samples.sportsclub.jsf.beans;
+package org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans;
 
 import java.util.Map;
 

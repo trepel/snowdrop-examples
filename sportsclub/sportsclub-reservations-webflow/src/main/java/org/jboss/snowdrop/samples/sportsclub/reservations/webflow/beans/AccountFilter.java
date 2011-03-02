@@ -1,6 +1,7 @@
-package org.jboss.snowdrop.samples.sportsclub.jsf.beans;
+package org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,13 +13,17 @@ import org.ajax4jsf.model.Range;
 import org.ajax4jsf.model.SequenceRange;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Account;
 import org.jboss.snowdrop.samples.sportsclub.service.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author <a href="mailto:lvlcek@redhat.com">Lukas Vlcek</a>
  */
-public class AccountFilter extends AbstractExtendedDataModelHelper
+public class AccountFilter extends AbstractExtendedDataModelHelper implements Serializable
 {
-   private AccountService accountService;
+   @Autowired
+   private transient AccountService accountService;
+
+   private Account selectedAccount;
 
    private String subscriberNameFragment;
    private Map<Long, Account> accountMap = new HashMap<Long, Account>();
@@ -57,10 +62,12 @@ public class AccountFilter extends AbstractExtendedDataModelHelper
 
    public Account getSelectedAccount()
    {
-      if (getSelection() != null && getSelection().size() > 0)
-         return accountMap.get(getSelectedKey());
-      else
-         return null;
+      return selectedAccount;
+   }
+
+   public void setSelectedAccount(Account selectedAccount)
+   {
+      this.selectedAccount = selectedAccount;
    }
 
    public Long getCurrentRowCount()

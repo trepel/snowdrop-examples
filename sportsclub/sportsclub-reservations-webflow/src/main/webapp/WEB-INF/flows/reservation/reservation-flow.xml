@@ -3,21 +3,39 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-    <persistence-context/>
+    <var name="equipmentFilterCreate" class="org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans.EquipmentFilter"/>
 
-    <var name="reservation" class="org.jboss.snowdrop.samples.sportsclub.domain.entity.Reservation"/>
+    <var name="accountFilterCreate" class="org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans.AccountFilter"/>
+
+    <on-start>
+       <set name="equipmentFilterSearch.equipmentService" value="equipmentService"/>
+       <set name="flowScope.reservation" value="reservationCreate.init()"/>
+    </on-start>
 
     <view-state id="selectAccount">
-		<transition on="next" to="chooseDate" bind="false" />
+		<transition on="next" to="chooseDateAndEquipment">
+		   <set name="flowScope.reservation.account" value="accountFilterCreate.selectedAccount"/>
+           <set name="flowScope.equipmentFilterCreate.availableFrom" value="flowScope.reservation.from"/>
+           <set name="flowScope.equipmentFilterCreate.availableTo" value="flowScope.reservation.to"/>
+		</transition>
 	</view-state>
 
-	<view-state id="chooseDate">
-		<transition on="next" to="confirmReservation" />
+	<view-state id="chooseDateAndEquipment">
+		<transition on="next" to="confirmReservation">
+            <set name="flowScope.reservation.equipment" value="equipmentFilterCreate.selectedEquipment"/>
+            <set name="flowScope.reservation.from" value="equipmentFilterCreate.availableFrom"/>
+            <set name="flowScope.reservation.to" value="equipmentFilterCreate.availableTo"/>
+        </transition>
         <transition on="previous" to="selectAccount"/>
 	</view-state>
 
-    <view-state id="confirmReservation"/>
+    <view-state id="confirmReservation">
+       <transition on="next" to="finishReservation">
+           <evaluate expression="reservationService.create(reservation)"/>
+        </transition>
+       <transition on="previous" to="chooseEquipment"/> 
+    </view-state>
 
-	<end-state id="finishReservation" commit="true"  view="searchReservation"/>
+	<end-state id="finishReservation" view="searchReservation"/>
 
 </flow>

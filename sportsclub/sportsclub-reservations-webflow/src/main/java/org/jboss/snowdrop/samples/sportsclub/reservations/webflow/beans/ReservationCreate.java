@@ -1,4 +1,4 @@
-package org.jboss.snowdrop.samples.sportsclub.jsf.beans;
+package org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -14,23 +14,17 @@ import org.jboss.snowdrop.samples.sportsclub.domain.entity.Equipment;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Reservation;
 import org.jboss.snowdrop.samples.sportsclub.service.AccountService;
 import org.jboss.snowdrop.samples.sportsclub.service.ReservationService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author <a href="mailto:lvlcek@redhat.com">Lukas Vlcek</a>
  */
 public class ReservationCreate
 {
-   private AccountFilter accountFilter;
-   private EquipmentFilter equipmentFilter;
 
-   private ReservationService reservationService;
-   private AccountService accountService;
-
-   private Reservation reservation;
-   private Long createdReservationId;
    private Locale locale;
 
-   public void init()
+   public Reservation init()
    {
       Date from;
       Date to;
@@ -42,44 +36,18 @@ public class ReservationCreate
       cal.set(Calendar.MONTH, cal.get(Calendar.MONTH) + 1);
       to = cal.getTime();
 
-      reservation = new Reservation();
+      Reservation reservation = new Reservation();
       reservation.setAccount(null);
       reservation.setEquipment(null);
       reservation.setFrom(from);
       reservation.setTo(to);
 
-      locale = Locale.getDefault();
+      this.locale = Locale.getDefault();
+
+      return reservation;
    }
 
-   public Locale getLocale()
-   {
-      return locale;
-   }
-
-   public String create()
-   {
-      Map<String, FacesMessage> errorMessages = validate(reservation);
-
-      if (!errorMessages.isEmpty())
-      {
-         FacesContext context = FacesContext.getCurrentInstance();
-         for (String key : errorMessages.keySet())
-         {
-            context.addMessage(key, errorMessages.get(key));
-         }
-         return "error";
-      }
-
-      reservation = reservationService.create(reservation);
-      createdReservationId = reservation.getId();
-      init();
-      accountFilter.setSelection(null);
-      equipmentFilter.setSelection(null);
-
-      return "success";
-   }
-
-   private Map<String, FacesMessage> validate(Reservation reservation)
+   public Map<String, FacesMessage> validate(Reservation reservation)
    {
 
       Map<String, FacesMessage> errors = new HashMap<String, FacesMessage>();
@@ -130,75 +98,8 @@ public class ReservationCreate
       return errors;
    }
 
-   public void updateSelectedAccount()
+   public Locale getLocale()
    {
-      Account account = accountFilter.getSelectedAccount();
-      reservation.setAccount(account);
-   }
-
-   public void updateSelectedEquipment()
-   {
-      Equipment equipment = equipmentFilter.getSelectedEquipment();
-      reservation.setEquipment(equipment);
-   }
-
-   public ReservationService getReservationService()
-   {
-      return reservationService;
-   }
-
-   public void setReservationService(ReservationService reservationService)
-   {
-      this.reservationService = reservationService;
-   }
-
-   public Reservation getReservation()
-   {
-      return reservation;
-   }
-
-   public void setReservation(Reservation reservation)
-   {
-      this.reservation = reservation;
-   }
-
-   public AccountService getAccountService()
-   {
-      return accountService;
-   }
-
-   public void setAccountService(AccountService accountService)
-   {
-      this.accountService = accountService;
-   }
-
-   public AccountFilter getAccountFilter()
-   {
-      return accountFilter;
-   }
-
-   public void setAccountFilter(AccountFilter accountFilter)
-   {
-      this.accountFilter = accountFilter;
-   }
-
-   public EquipmentFilter getEquipmentFilter()
-   {
-      return equipmentFilter;
-   }
-
-   public void setEquipmentFilter(EquipmentFilter equipmentFilter)
-   {
-      this.equipmentFilter = equipmentFilter;
-   }
-
-   public long getCreatedReservationId()
-   {
-      return createdReservationId;
-   }
-
-   public void setCreatedReservationId(long createdReservationId)
-   {
-      this.createdReservationId = createdReservationId;
+      return locale;
    }
 }

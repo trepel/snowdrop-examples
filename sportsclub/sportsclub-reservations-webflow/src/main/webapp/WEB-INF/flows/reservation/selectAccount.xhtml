@@ -34,8 +34,6 @@
                                                     enableContextMenu="true"
                                                     height="250px"
                                                     rows="5">
-                                <a4j:support event="onselectionchange"
-                                             action="#{reservationCreate.updateSelectedAccount}"/>
 
                                 <rich:column label="Id" width="7%">
                                     <f:facet name="header">
@@ -72,6 +70,16 @@
                                     <h:outputText value="#{account.subscriber.address.country}"/>
                                 </rich:column>
 
+                                <rich:column label="Action">
+                                    <f:facet name="header">
+                                        <h:outputText value="Action"/>
+                                    </f:facet>
+                                    <a4j:commandButton id="SelectAccount" value="Create Reservation" action="next">
+                                        <f:setPropertyActionListener value="#{account}" target="#{accountFilterCreate.selectedAccount}"/>
+                                    </a4j:commandButton>
+                                </rich:column>
+
+
                                 <f:facet name="footer">
                                     <rich:datascroller id="scrollerAccount" for="accountsTable" maxPages="5"
                                                        page="#{accountFilterCreate.currentPage}"/>
@@ -79,18 +87,16 @@
                             </rich:extendedDataTable>
                         </h:form>
                     </rich:panel>
-
                 </td>
-
             </tr>
-            <tr>
-                <rich:panel>
-                   <h:form>
-                            <a4j:commandButton id="searchButtonNext" value="Next" action="next"/>
-                           <a4j:commandButton id="searchButtonPrevious" value="Previous" action="previous"/>
-                        </h:form>
-                </rich:panel>
-            </tr>
+             <!--<tr>-->
+                <!--<rich:panel>-->
+                   <!--<h:form>-->
+                            <!--<a4j:commandButton id="searchButtonNext" value="Next" action="next"/>-->
+                           <!--<a4j:commandButton id="searchButtonPrevious" value="Previous" action="previous"/>-->
+                        <!--</h:form>-->
+                <!--</rich:panel>-->
+            <!--</tr>-->
         </table>
 
     </ui:define>

@@ -1,4 +1,4 @@
-package org.jboss.snowdrop.samples.sportsclub.jsf.beans;
+package org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans;
 
 import org.ajax4jsf.model.DataVisitor;
 import org.ajax4jsf.model.Range;

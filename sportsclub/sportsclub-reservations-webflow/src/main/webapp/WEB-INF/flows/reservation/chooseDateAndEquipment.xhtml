@@ -1,0 +1,96 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                 xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j"
+                template="/layout/template.xhtml">
+    <ui:define name="content">
+
+        <rich:panel>
+            <h:outputLabel value="From"/>
+            <h:panelGroup>
+                <rich:calendar id="from"
+                               value="#{equipmentFilterCreate.availableFrom}"
+                               datePattern="d/M/yy HH:mm"
+                               showApplyButton="true"
+                               locale="#{reservationCreate.locale}">
+                    <a4j:support event="onchange"
+                                             action="#{equipmentFilterCreate.reset}" reRender="equipmentsTable"/>
+                 </rich:calendar>
+                <h:message for="from" style="color:RED" showDetail="true" showSummary="true"/>
+            </h:panelGroup>
+
+            <h:outputLabel value="To"/>
+            <h:panelGroup>
+                <rich:calendar id="to"
+                               value="#{equipmentFilterCreate.availableTo}"
+                               datePattern="d/M/yy HH:mm"
+                               showApplyButton="true"
+                               locale="#{reservationCreate.locale}">
+                    <a4j:support event="onchange"
+                                             action="#{equipmentFilterCreate.reset}" reRender="equipmentsTable"/>
+                 </rich:calendar>
+                <h:message for="to" style="color:RED" showDetail="true" showSummary="true"/>
+            </h:panelGroup>
+
+
+
+        </rich:panel>
+
+         <rich:panel>
+                        <f:facet name="header">Select Equipment</f:facet>
+                        <h:form id="EquipmentSelectForm">
+                            <rich:extendedDataTable id="equipmentsTable" value="#{equipmentFilterCreate}" var="equipment"
+                                                    selectionMode="single"
+                                                    selection="#{equipmentFilterCreate.selection}"
+                                                    enableContextMenu="true"
+                                                    height="250px"
+                                                    rows="5">
+
+                                <rich:column label="Id" width="7%">
+                                    <f:facet name="header">
+                                        <h:outputText value="Id"/>
+                                    </f:facet>
+                                    <h:outputText value="#{equipment.id}"/>
+                                </rich:column>
+
+                                <rich:column label="Name">
+                                    <f:facet name="header">
+                                        <h:outputText value="Name"/>
+                                    </f:facet>
+                                    <h:outputText value="#{equipment.name}"/>
+                                </rich:column>
+
+                                <rich:column label="Description">
+                                    <f:facet name="header">
+                                        <h:outputText value="Description"/>
+                                    </f:facet>
+                                    <h:outputText value="#{equipment.description}"/>
+                                </rich:column>
+
+                                <rich:column label="Actions">
+                                    <f:facet name="header">
+                                        <h:outputText value="Actions"/>
+                                    </f:facet>
+                                    <a4j:commandButton id="SelectEquipment" value="Create Reservation" action="next">
+                                        <f:setPropertyActionListener value="#{equipment}" target="#{equipmentFilterCreate.selectedEquipment}"/>
+                                    </a4j:commandButton>
+                                </rich:column>
+
+
+                                <f:facet name="footer">
+                                    <rich:datascroller id="scrollerAccount" for="equipmentsTable" maxPages="5"
+                                                       page="#{equipmentFilterCreate.currentPage}"/>
+                                </f:facet>
+                            </rich:extendedDataTable>
+                        </h:form>
+                    </rich:panel>
+        <rich:panel>
+            <h:form>
+                <a4j:commandButton id="next" value="Next" action="next"/>
+                <a4j:commandButton id="previous" value="Previous" action="previous"/>
+            </h:form>
+        </rich:panel>
+    </ui:define>
+</ui:composition>

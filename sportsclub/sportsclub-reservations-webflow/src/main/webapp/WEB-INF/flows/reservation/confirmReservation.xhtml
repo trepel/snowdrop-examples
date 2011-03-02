@@ -1,0 +1,28 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j"
+                template="/layout/template.xhtml">
+    <ui:define name="content">
+
+
+        <rich:panel>
+            <h:form>
+                Will create a reservation for #<h:outputText value="#{reservation.equipment}"/>.
+                Date:<h:outputText value="#{reservation.from}"/> to <h:outputText value="#{reservation.to}"/>
+            </h:form>
+        </rich:panel>
+
+        <rich:panel>
+            <h:form>
+                <a4j:commandButton id="next" value="Next" action="next"/>
+                <a4j:commandButton id="previous" value="Previous" action="previous"/>
+            </h:form>
+        </rich:panel>
+
+    </ui:define>
+</ui:composition>
