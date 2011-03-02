@@ -3,13 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
+
     <var name="equipmentFilterCreate" class="org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans.EquipmentFilter"/>
 
     <var name="accountFilterCreate" class="org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans.AccountFilter"/>
 
+    <input name="reservationId" required="false" type="java.lang.Long"/>
+
     <on-start>
        <set name="equipmentFilterSearch.equipmentService" value="equipmentService"/>
-       <set name="flowScope.reservation" value="reservationCreate.init()"/>
+       <set name="flowScope.reservation" value="reservationCreate.init(reservationId)"/>
     </on-start>
 
     <view-state id="selectAccount">

@@ -97,6 +97,15 @@
                             </h:outputText>
                         </rich:column>
 
+                        <rich:column label="Actions">
+                                    <f:facet name="header">
+                                        <h:outputText value="Actions"/>
+                                    </f:facet>
+                                    <h:outputLink value="${request.contextPath}/flow/reservation?reservationId=${reservation.id}">
+                                        <h:outputText>Change</h:outputText>
+                                    </h:outputLink>
+                          </rich:column>
+
                         <f:facet name="footer">
                             <rich:datascroller id="scroller" for="searchResultsTable" maxPages="5"
                                                page="#{reservationSearch.currentPage}"/>

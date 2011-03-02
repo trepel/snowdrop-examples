@@ -22,30 +22,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ReservationCreate
 {
 
+   @Autowired
+   private ReservationService reservationService;
+
    private Locale locale;
 
-   public Reservation init()
+   public Reservation init(Long reservationId)
    {
-      Date from;
-      Date to;
-
-      Calendar cal = Calendar.getInstance(Locale.US);
-      //cal.clear();
-      from = cal.getTime();
-
-      cal.set(Calendar.MONTH, cal.get(Calendar.MONTH) + 1);
-      to = cal.getTime();
-
-      Reservation reservation = new Reservation();
-      reservation.setAccount(null);
-      reservation.setEquipment(null);
-      reservation.setFrom(from);
-      reservation.setTo(to);
-
       this.locale = Locale.getDefault();
 
-      return reservation;
+
+      if (reservationId == null)
+      {
+         Date from;
+         Date to;
+
+         Calendar cal = Calendar.getInstance(Locale.US);
+         //cal.clear();
+         from = cal.getTime();
+
+         cal.set(Calendar.MONTH, cal.get(Calendar.MONTH) + 1);
+         to = cal.getTime();
+         Reservation reservation = new Reservation();
+         reservation.setAccount(null);
+         reservation.setEquipment(null);
+         reservation.setFrom(from);
+         reservation.setTo(to);
+
+
+         return reservation;
+      }
+      else
+      {
+         return reservationService.loadReservation(reservationId);
+      }
    }
+
 
    public Map<String, FacesMessage> validate(Reservation reservation)
    {

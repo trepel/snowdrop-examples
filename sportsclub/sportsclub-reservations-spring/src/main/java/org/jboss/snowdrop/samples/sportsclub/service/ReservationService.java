@@ -21,4 +21,6 @@ public interface ReservationService
    public void delete(Reservation reservation);
 
    public Reservation updateReservation(Reservation reservation);
+
+   Reservation loadReservation(Long reservationId);
 }
