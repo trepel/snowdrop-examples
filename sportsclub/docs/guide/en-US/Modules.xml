@@ -629,7 +629,7 @@ public class BillingServiceImpl implements BillingService
         example). Spring provides a request scope as well, but it is not used
         in this example.</para>
 
-        <programlisting>&lt;bean id="reservationCreate" class="org.jboss.snowdrop.samples.sportsclub.jsf.beans.ReservationCreate" scope="session" init-method="init"&gt;
+        <programlisting>&lt;bean id="reservationCreate" class="ReservationCreate" scope="session" init-method="init"&gt;
         &lt;property name="reservationService" ref="reservationService"/&gt;
         &lt;property name="accountService" ref="accountService"/&gt;
         &lt;property name="accountFilter" ref="accountFilterCreate"/&gt;
