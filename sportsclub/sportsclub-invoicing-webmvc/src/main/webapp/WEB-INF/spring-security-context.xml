@@ -55,6 +55,11 @@
 
     <bean id="etf" class="org.springframework.security.web.access.ExceptionTranslationFilter">
         <property name="authenticationEntryPoint" ref="preAuthenticatedProcessingFilterEntryPoint"/>
+        <property name="accessDeniedHandler">
+            <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+                <property name="errorPage" value="/WEB-INF/jsp/accessDenied.jsp"/>
+            </bean>
+        </property>
     </bean>
 
     <bean id="httpRequestAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
