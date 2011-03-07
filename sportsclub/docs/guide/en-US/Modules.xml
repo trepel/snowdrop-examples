@@ -120,6 +120,15 @@
             </row>
 
             <row>
+              <entry></entry>
+
+              <entry>Conversation-oriented web application</entry>
+
+              <entry>The application uses Spring Web Flow for defining a
+              conversational process for creating a reservation</entry>
+            </row>
+
+            <row>
               <entry>JMS/JCA integration</entry>
 
               <entry>JMS/Spring integration using JCA</entry>
@@ -159,15 +168,6 @@
               JBoss WS, but also Spring to define the underlying business
               logic, which is injected into the JBoss WS-deployed
               services.</entry>
-            </row>
-
-            <row>
-              <entry>Web Flow</entry>
-
-              <entry>Conversation-oriented web application</entry>
-
-              <entry>The application uses Spring Web Flow for defining a
-              conversational process for creating a reservation</entry>
             </row>
 
             <row>
@@ -717,9 +717,120 @@ public class BillingServiceImpl implements BillingService
     </section>
 
     <section>
-      <title>Conversation-based Reservations</title>
+      <title>Reservations-Webflow: Conversation-based reservations</title>
 
-      <para></para>
+      <para>The Sportsclub package includes an alternate version of the
+      reservations application, which uses Spring Webflow. As with the
+      previous example, the main view technology is JSF, using Richfaces as a
+      component library, and Spring is used for managing the backing beans for
+      JSF pages and business services. </para>
+
+      <para>However, unlike the previous example where the interaction is
+      form-based, this application uses a conversation-based model for driving
+      the user interaction. A reservation is created in a sequence of steps
+      that represents a conversation - a distinct scope which spans multiple
+      requests, but less broader than a session. The input data (selected
+      account, selected equipment and date) are preserved for the duration of
+      the conversation, and discarded automatically after the conversation has
+      ended. The Sportsclub application uses Spring Webflow for implementing
+      conversation-based multi-step dialogues.</para>
+
+      <para>The Spring business application context is bootstrapped by the
+      ContextLoaderListener defined in /WEB-INF/web.xml. The Spring
+      configuration file in use is /WEB-INF/spring-beans.xml, which:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>imports the context definition fragments included in the other
+          JARs of the application (i.e. the JARs that contain the business
+          logic, defined at 4.1)</para>
+        </listitem>
+
+        <listitem>
+          <para>defines a number of Spring beans that are used directly in the
+          web tier by the JSF pages or by the Richfaces components;</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>For the UI and Spring Webflow integration, the application defines
+      a DispatcherServlet in web.xml, in a similar way to Spring MVC
+      applications. </para>
+
+      <para><informalexample>
+          <programlisting>&lt;servlet&gt;
+        &lt;servlet-name&gt;Spring MVC Dispatcher Servlet&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;/WEB-INF/spring-webflow-config.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/servlet&gt;
+
+
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;Spring MVC Dispatcher Servlet&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/flow/*&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;</programlisting>
+        </informalexample>The spring-webflow-config.xml configuration file
+      contains the Spring Webflow bean definitions.</para>
+
+      <para><informalexample>
+          <programlisting>    &lt;webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices"&gt;
+        &lt;webflow:flow-location path="/WEB-INF/flows/reservation/reservation-flow.xml" id="reservation"/&gt;
+    &lt;/webflow:flow-registry&gt;
+
+    &lt;webflow:flow-executor flow-registry="flowRegistry" id="flowExecutor"&gt;
+        &lt;webflow:flow-execution-listeners&gt;
+            &lt;webflow:listener ref="facesWebFlowListener"/&gt;
+        &lt;/webflow:flow-execution-listeners&gt;
+    &lt;/webflow:flow-executor&gt;
+
+    &lt;bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter"&gt;
+        &lt;property name="flowExecutor" ref="flowExecutor"/&gt;
+        &lt;property name="ajaxHandler"&gt;
+            &lt;bean class="org.springframework.faces.richfaces.RichFacesAjaxHandler"/&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping"&gt;
+        &lt;property name="flowRegistry" ref="flowRegistry"/&gt;
+        &lt;property name="order" value="0"/&gt;
+    &lt;/bean&gt;
+
+    &lt;faces:flow-builder-services id="flowBuilderServices" development="true"/&gt;
+
+    &lt;bean id="facesWebFlowListener" class="org.springframework.faces.webflow.FlowFacesContextLifecycleListener"/&gt;
+</programlisting>
+        </informalexample>The definitions above include:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>a flow registry containing the flow definitions;</para>
+        </listitem>
+
+        <listitem>
+          <para>a flow executor which is the Spring Webflow engine;</para>
+        </listitem>
+
+        <listitem>
+          <para>a pair of FlowHandlerAdapter and FlowHandlerMapping beans
+          which ensure that any requests that are handled by the
+          DispatcherServlet declared in web.xml are delegated to the Spring
+          Webflow executor; </para>
+        </listitem>
+
+        <listitem>
+          <para>the &lt;faces:flow-builder-services/&gt; facesWebFlowListener
+          beans are used for integrating Spring Webflow with JSF, in other
+          words for using JSF views for rendering the view states.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>The application is using a flow definition for creating a
+      reservation, described in
+      /WEB-INF/flows/reservation/reservation-flow.xml. The JSF pages used for
+      rendering the flow views are located in the same
+      /WEB-INF/flows/reservation/ directory.</para>
     </section>
 
     <section>
@@ -727,10 +838,10 @@ public class BillingServiceImpl implements BillingService
 
       <para>The Invoicing application provides another example of
       interoperability between Spring and the Java EE services provided by
-      JBoss. If in the previous example, the business tier was implemented
-      using Spring and the web tier was using JSF, in this example the roles
-      are reversed: the business tier is using EJB and the web tier is using
-      Spring.</para>
+      JBoss. If in the previous two examples, the business tier was
+      implemented using Spring and the web tier was using JSF, in this example
+      the roles are reversed: the business tier is using EJB and the web tier
+      is using Spring.</para>
 
       <para>The Spring MVC beans are defined in the
       /WEB-INF/spring-servlet-context.xml file, referenced by the Spring MVC
@@ -848,13 +959,6 @@ public class AccountController
       contains a number of business services that are using Spring. They do
       not play any role in the Spring MVC/EJB integration, and we will discuss
       more about them in section 6.</para>
-    </section>
-
-    <section>
-      <title>Invoicing: JBoss-preauthenticated security</title>
-
-      <para>The invoicing module also illustrates the usage of JBoss-based
-      preauthentication and interaction with Spring security.</para>
     </section>
 
     <section>
@@ -1164,6 +1268,159 @@ public class PaymentNotificationService extends SpringBeanAutowiringSupport
         service can be tested using a free SOAP testing tool such as SOAP
         UI.</para>
       </informalexample>
+    </section>
+
+    <section>
+      <title>Secure invoicing: JBoss-preauthenticated security</title>
+
+      <para>The invoicing module also illustrates the usage of JBoss-based
+      preauthentication and interaction with Spring Security. Access to the
+      invoicing module is secured using the Java EE security mechanisms, as
+      described web.xml:</para>
+
+      <para><informalexample>
+          <para><programlisting>&lt;security-constraint&gt;
+          &lt;web-resource-collection&gt;
+               &lt;web-resource-name&gt;All resources&lt;/web-resource-name&gt;
+               &lt;description&gt;Protects all resources&lt;/description&gt;
+               &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+          &lt;/web-resource-collection&gt;
+          &lt;auth-constraint&gt;
+               &lt;role-name&gt;*&lt;/role-name&gt;
+          &lt;/auth-constraint&gt;
+     &lt;/security-constraint&gt;
+    &lt;login-config&gt;
+        &lt;auth-method&gt;BASIC&lt;/auth-method&gt;
+        &lt;realm-name&gt;sportsclub-invoicing&lt;/realm-name&gt;
+    &lt;/login-config&gt;
+    &lt;security-role&gt;
+        &lt;role-name&gt;ADMINISTRATOR&lt;/role-name&gt;
+    &lt;/security-role&gt;
+    &lt;security-role&gt;
+        &lt;role-name&gt;EMPLOYEE&lt;/role-name&gt;
+    &lt;/security-role&gt;</programlisting></para>
+
+          <para>In this scenario, the security domain is set up externaly (for
+          example for multiple applications) and linked to the web application
+          by the definition in jboss-web.xml</para>
+
+          <informalexample>
+            <para></para>
+          </informalexample>
+
+          <programlisting>&lt;jboss-web&gt;
+     &lt;security-domain&gt;java:/jaas/employees&lt;/security-domain&gt;
+&lt;/jboss-web&gt;</programlisting>
+
+          <para>In the scenario implemented by this application, the concept
+          of an 'employee who can access the application' is external to the
+          application itself (perhaps multiple applications can use the same
+          security domain) and defined globally in the
+          security-jboss-beans.xml file (deployed in the server setup
+          phase).</para>
+
+          <informalexample>
+            <para></para>
+          </informalexample>
+
+          <programlisting>&lt;application-policy xmlns="urn:jboss:security-beans:1.0" name="employees"&gt;
+        &lt;authentication&gt;
+            &lt;login-module code="org.jboss.security.auth.spi.DatabaseServerLoginModule"
+                          flag="required"&gt;
+                &lt;module-option name="unauthenticatedIdentity"&gt;guest&lt;/module-option&gt;
+                &lt;module-option name="dsJndiName"&gt;java:/SportsClubDS&lt;/module-option&gt;
+                &lt;module-option name="principalsQuery"&gt;
+                    select passwd from USERS where username=?
+                &lt;/module-option&gt;
+                &lt;module-option name="rolesQuery"&gt;
+                    select userRoles,'Roles' from ROLES where username=?
+                &lt;/module-option&gt;
+            &lt;/login-module&gt;
+        &lt;/authentication&gt;
+    &lt;/application-policy&gt;</programlisting>
+
+          <para>Essentially, the login will be performed based on the data
+          contained in the USERS and USERROLES tables defined up during the
+          process of setting up the Sportsclub DS datasource (however, it is
+          not the application that accesses the database directly, but the
+          JaaS login module):</para>
+
+          <informalexample>
+            <para></para>
+          </informalexample>
+
+          <programlisting>INSERT INTO USERS VALUES ('admin','adminPass')
+INSERT INTO USERS VALUES ('employee','employeePass')
+INSERT INTO ROLES VALUES ('admin','ADMINISTRATOR')
+INSERT INTO ROLES VALUES ('admin','EMPLOYEE')
+INSERT INTO ROLES VALUES ('employee','EMPLOYEE')
+</programlisting>
+
+          <para>The two users admin and employee are used to illustrate the
+          different authorization levels in the application. The application
+          uses Spring Security for authorizing access to the invoicing
+          application's components (web pages and methods) as described in
+          /WEB-INF/spring-security-context.xml. Of specific interest to our
+          application is the filterSecurityInterceptor bean definition, which
+          contains the access security metadata definitions:</para>
+
+          <informalexample>
+            <para><programlisting>&lt;bean id="filterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor"&gt;
+        &lt;property name="authenticationManager" ref="authenticationManager"/&gt;
+        &lt;property name="accessDecisionManager" ref="httpRequestAccessDecisionManager"/&gt;
+        &lt;property name="securityMetadataSource"&gt;
+            &lt;sec:filter-invocation-definition-source&gt;
+                &lt;sec:intercept-url pattern="/generateInvoice.do" access="ROLE_ADMINISTRATOR"/&gt;
+                &lt;sec:intercept-url pattern="/**" access="ROLE_EMPLOYEE"/&gt;
+            &lt;/sec:filter-invocation-definition-source&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;</programlisting>As you can see, anyone who is an employee
+            can access any section of the site, but only administrators (i.e.
+            the 'admin') user can generate invoices. </para>
+
+            <para>A similar provision is made for payments. Application
+            classes will be scanned for security annotations, as requested by
+            the following bean definition:</para>
+
+            <programlisting>
+    &lt;sec:global-method-security secured-annotations="enabled"/&gt;
+</programlisting>
+
+            <para>For example, such a class is the PaymentProcessor
+            implementation:</para>
+          </informalexample>
+        </informalexample></para>
+
+      <para><informalexample>
+          <para><programlisting>public class PaymentProcessorImpl implements PaymentProcessor
+{
+   @Autowired
+   private AccountRepository accountRepository;
+
+   @Autowired
+   private PaymentRepository paymentRepository;
+
+   @Transactional
+   @Secured("ROLE_ADMIN")
+   public Long processPayment(Long accountId, BigDecimal amount)
+   {
+      Account account = accountRepository.findById(accountId);
+      Payment payment = new Payment();
+      payment.setAccount(account);
+
+      payment.setAmount(amount);
+      payment.setDate(new Date());
+      payment = paymentRepository.save(payment);
+      Balance balance = account.getBalance();
+      balance.credit(amount);
+      accountRepository.save(account);
+      return payment.getId();
+   }
+}</programlisting> A payment can be processed only if the request is performed
+          by a user that can authenticate as an administrator. Unlike the
+          previous example, the authorization is not performed on the web
+          resource (URL), but at the business method level.</para>
+        </informalexample></para>
     </section>
   </section>
 </chapter>
