@@ -723,7 +723,7 @@ public class BillingServiceImpl implements BillingService
       reservations application, which uses Spring Webflow. As with the
       previous example, the main view technology is JSF, using Richfaces as a
       component library, and Spring is used for managing the backing beans for
-      JSF pages and business services. </para>
+      JSF pages and business services.</para>
 
       <para>However, unlike the previous example where the interaction is
       form-based, this application uses a conversation-based model for driving
@@ -754,7 +754,7 @@ public class BillingServiceImpl implements BillingService
 
       <para>For the UI and Spring Webflow integration, the application defines
       a DispatcherServlet in web.xml, in a similar way to Spring MVC
-      applications. </para>
+      applications.</para>
 
       <para><informalexample>
           <programlisting>&lt;servlet&gt;
@@ -816,7 +816,7 @@ public class BillingServiceImpl implements BillingService
           <para>a pair of FlowHandlerAdapter and FlowHandlerMapping beans
           which ensure that any requests that are handled by the
           DispatcherServlet declared in web.xml are delegated to the Spring
-          Webflow executor; </para>
+          Webflow executor;</para>
         </listitem>
 
         <listitem>
@@ -1376,7 +1376,7 @@ INSERT INTO ROLES VALUES ('employee','EMPLOYEE')
         &lt;/property&gt;
     &lt;/bean&gt;</programlisting>As you can see, anyone who is an employee
             can access any section of the site, but only administrators (i.e.
-            the 'admin') user can generate invoices. </para>
+            the 'admin') user can generate invoices.</para>
 
             <para>A similar provision is made for payments. Application
             classes will be scanned for security annotations, as requested by
@@ -1385,41 +1385,7 @@ INSERT INTO ROLES VALUES ('employee','EMPLOYEE')
             <programlisting>
     &lt;sec:global-method-security secured-annotations="enabled"/&gt;
 </programlisting>
-
-            <para>For example, such a class is the PaymentProcessor
-            implementation:</para>
           </informalexample>
-        </informalexample></para>
-
-      <para><informalexample>
-          <para><programlisting>public class PaymentProcessorImpl implements PaymentProcessor
-{
-   @Autowired
-   private AccountRepository accountRepository;
-
-   @Autowired
-   private PaymentRepository paymentRepository;
-
-   @Transactional
-   @Secured("ROLE_ADMIN")
-   public Long processPayment(Long accountId, BigDecimal amount)
-   {
-      Account account = accountRepository.findById(accountId);
-      Payment payment = new Payment();
-      payment.setAccount(account);
-
-      payment.setAmount(amount);
-      payment.setDate(new Date());
-      payment = paymentRepository.save(payment);
-      Balance balance = account.getBalance();
-      balance.credit(amount);
-      accountRepository.save(account);
-      return payment.getId();
-   }
-}</programlisting> A payment can be processed only if the request is performed
-          by a user that can authenticate as an administrator. Unlike the
-          previous example, the authorization is not performed on the web
-          resource (URL), but at the business method level.</para>
         </informalexample></para>
     </section>
   </section>

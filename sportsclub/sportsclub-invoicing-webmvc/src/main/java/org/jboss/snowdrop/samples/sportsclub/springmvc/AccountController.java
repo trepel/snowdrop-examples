@@ -96,7 +96,6 @@ public class AccountController
    }
 
    @RequestMapping(value = "/generateInvoice.do", method = RequestMethod.POST)
-   @Secured("ROLE_ADMIN")
    ModelMap generateInvoice(@RequestParam("id") String id)
    {
       Account account = subscriptionService.findAccountById(Long.parseLong(id));

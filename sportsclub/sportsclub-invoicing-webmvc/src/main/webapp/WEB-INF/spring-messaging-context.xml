@@ -23,7 +23,7 @@
 
     <jboss:resource-adapter id="resourceAdapter"/>
 
-    <jee:jndi-lookup id="jcaConnectionFactory" jndi-name="java:/JmsXA"/>
+    <jee:jndi-lookup id="jcaConnectionFactory" jndi-name="java:/JmsXA" expected-type="javax.jms.ConnectionFactory"/>
 
     <bean class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="jcaConnectionFactory"/>
