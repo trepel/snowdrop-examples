@@ -86,8 +86,9 @@ mvn clean package -Pspring-3
 
 7. Point the browser at one of:
 
-   http://localhost:8080/sportsclub/invoicing
+   http://localhost:8080/sportsclub/invoicing [1]
    http://localhost:8080/sportsclub/reservations
+   http://localhost:8080/sportsclub/reservations-webflow
    http://localhost:8080/sportsclub/subscriptions
 
 
@@ -107,6 +108,14 @@ If the line is commented, then JMS integration will not be enabled. This feature
 the JBoss AS Web Profile.
 
 
+Notes:
+
+[1] The invoicing application uses pre-authentication, therefore it is necessary to use one of the following user/password
+combinations:
+
+admin/adminPass - for an administrator account, which can generate invoices
+employee/employeePass - for an employee account which can browse the invoices but cannot generate one
+                        (attempt will result in an application failure)
 
 
 

@@ -427,7 +427,7 @@
                 <spring.version>2.5.6.SEC02</spring.version>
                 <junit.version>4.4</junit.version>
                 <spring-security.version>2.0.6.RELEASE</spring-security.version>
-                <spring-webflow.version>2.0.6.RELEASE</spring-webflow.version>
+                <spring-webflow.version>2.0.9.RELEASE</spring-webflow.version>
             </properties>
             <dependencyManagement>
                 <dependencies>
@@ -464,7 +464,7 @@
         <profile>
         <id>spring-3</id>
             <properties>
-                <spring.version>3.0.2.RELEASE</spring.version>
+                <spring.version>3.0.5.RELEASE</spring.version>
                 <junit.version>4.6</junit.version>
                 <spring-security.version>3.0.2.RELEASE</spring-security.version>
                 <spring-webflow.version>2.2.1.RELEASE</spring-webflow.version>
