@@ -1360,9 +1360,14 @@ INSERT INTO ROLES VALUES ('employee','EMPLOYEE')
           different authorization levels in the application. The application
           uses Spring Security for authorizing access to the invoicing
           application's components (web pages and methods) as described in
-          /WEB-INF/spring-security-context.xml. Of specific interest to our
-          application is the filterSecurityInterceptor bean definition, which
-          contains the access security metadata definitions:</para>
+          /WEB-INF/spring-security-context.xml. Because the application can be
+          built either with Spring 2.5 and Spring 3, it will also use
+          different Spring Security versions. Because of package name changes
+          from Spring Security 2 to Spring Security 3, the </para>
+
+          <para>Of specific interest to our application is the
+          filterSecurityInterceptor bean definition, which contains the access
+          security metadata definitions:</para>
 
           <informalexample>
             <para><programlisting>&lt;bean id="filterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor"&gt;

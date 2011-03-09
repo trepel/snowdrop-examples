@@ -34,7 +34,7 @@ public class ReservationCreate
       this.locale = Locale.getDefault();
 
 
-      if (reservationId == null)
+      if (reservationId == null || reservationId == 0)
       {
          Date from;
          Date to;

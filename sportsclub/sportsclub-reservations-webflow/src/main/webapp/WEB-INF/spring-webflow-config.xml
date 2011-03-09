@@ -14,11 +14,7 @@
         <webflow:flow-location path="/WEB-INF/flows/reservation/reservation-flow.xml" id="reservation"/>
     </webflow:flow-registry>
 
-    <webflow:flow-executor flow-registry="flowRegistry" id="flowExecutor">
-        <webflow:flow-execution-listeners>
-            <webflow:listener ref="facesWebFlowListener"/>
-        </webflow:flow-execution-listeners>
-    </webflow:flow-executor>
+    <webflow:flow-executor flow-registry="flowRegistry" id="flowExecutor"/>
 
     <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
         <property name="flowExecutor" ref="flowExecutor"/>
@@ -26,13 +22,12 @@
             <bean class="org.springframework.faces.richfaces.RichFacesAjaxHandler"/>
         </property>
     </bean>
+
     <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
         <property name="flowRegistry" ref="flowRegistry"/>
         <property name="order" value="0"/>
     </bean>
 
     <faces:flow-builder-services id="flowBuilderServices" development="true"/>
-
-    <bean id="facesWebFlowListener" class="org.springframework.faces.webflow.FlowFacesContextLifecycleListener"/>
 
 </beans>

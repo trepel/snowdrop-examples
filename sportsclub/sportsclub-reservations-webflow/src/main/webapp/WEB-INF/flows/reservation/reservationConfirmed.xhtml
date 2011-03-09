@@ -10,18 +10,15 @@
     <ui:define name="content">
 
 
-       <rich:panel >
-           <f:facet name="header">Do you want to save the following reservation?</f:facet>
+        <rich:panel >
+           <f:facet name="header">Reservation saved</f:facet>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Id:" />
-                    <h:panelGroup rendered="#{reservation.id != null}">
-                        <h:outputText value="#{reservation.id}"/>
-                    </h:panelGroup>
-
-                    <h:panelGroup rendered="#{reservation.id == null}">
-                        <h:outputText value="New"/>
-                    </h:panelGroup>
+                    <h:outputLabel value="Id:" rendered="#{reservation.id != null}"/>
+                    <h:panelGroup>
+                        <h:outputText rendered="#{reservation.id != null}"
+                                      value="#{reservation.id}"/>
+                     </h:panelGroup>
 
                     <h:outputLabel value="Equipment:"/>
                     <h:panelGroup>
@@ -60,13 +57,6 @@
                                    rendered="#{reservationSearch.editing}"/>
                     </h:panelGroup>
                 </h:panelGrid>
-            </h:form>
-        </rich:panel>
-
-        <rich:panel>
-            <h:form>
-                <a4j:commandButton id="next" value="Confirm" action="next"/>
-                <a4j:commandButton id="previous" value="Previous" action="previous"/>
             </h:form>
         </rich:panel>
 

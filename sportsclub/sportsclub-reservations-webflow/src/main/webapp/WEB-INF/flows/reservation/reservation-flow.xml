@@ -12,16 +12,14 @@
 
     <on-start>
        <set name="flowScope.reservation" value="reservationCreate.init(reservationId)"/>
-       <set name="equipmentFilterSearch.equipmentService" value="equipmentService"/>
-       <set name="equipmentFilterCreate.reservation" value="reservation"/>
-       <set name="equipmentFilterCreate.selection" value="reservationCreate.selectEquipment(reservation)"/>
-       <set name="accountFilterCreate.selection" value="reservationCreate.selectAccount(reservation)"/>
+       <set name="equipmentFilterCreate.equipmentService" value="equipmentService"/>
+       <set name="equipmentFilterCreate.reservation" value="flowScope.reservation"/>
+       <set name="equipmentFilterCreate.selection" value="reservationCreate.selectEquipment(flowScope.reservation)"/>
+       <set name="accountFilterCreate.selection" value="reservationCreate.selectAccount(flowScope.reservation)"/>
     </on-start>
 
     <view-state id="selectAccount">
-		<transition on="next" to="chooseDateAndEquipment">
-		   <set name="flowScope.reservation.account" value="accountFilterCreate.selectedAccount"/>
-		</transition>
+		<transition on="next" to="chooseDateAndEquipment"/>
 	</view-state>
 
 	<view-state id="chooseDateAndEquipment">
@@ -30,12 +28,16 @@
 	</view-state>
 
     <view-state id="confirmReservation">
-       <transition on="next" to="finishReservation">
-           <evaluate expression="reservationService.create(reservation)"/>
+       <transition on="next" to="reservationConfirmed">
+           <evaluate expression="reservationService.create(reservation)" result="flowScope.reservation"/>
         </transition>
        <transition on="previous" to="chooseDateAndEquipment"/>
     </view-state>
 
-	<end-state id="finishReservation" view="searchReservation"/>
+    <view-state id="reservationConfirmed">
+       <transition on="*" to="finishReservation"/>
+    </view-state>
+
+	<end-state id="finishReservation"/>
 
 </flow>

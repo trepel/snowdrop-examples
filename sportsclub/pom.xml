@@ -188,6 +188,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.jboss.el</groupId>
+                <artifactId>jboss-el</artifactId>
+                <version>1.0_02.CR5</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-core</artifactId>
                 <version>${spring-security.version}</version>

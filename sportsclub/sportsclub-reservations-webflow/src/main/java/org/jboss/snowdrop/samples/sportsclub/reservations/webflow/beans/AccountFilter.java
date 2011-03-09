@@ -70,6 +70,18 @@ public class AccountFilter extends AbstractExtendedDataModelHelper implements Se
       this.selectedAccount = selectedAccount;
    }
 
+   public void accountSelected()
+   {
+      if (getSelectedKey() != null)
+      {
+         this.setSelectedAccount(((Account) getDomainObjectMap().get(getSelectedKey())));
+      }
+      else
+      {
+         this.setSelectedAccount(null);
+      }
+   }
+
    public Long getCurrentRowCount()
    {
       return accountService.countAccounts(subscriberNameFragment);
