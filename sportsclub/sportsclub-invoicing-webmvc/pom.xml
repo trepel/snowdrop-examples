@@ -166,7 +166,7 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <dependencies>
+             <dependencies>
                 <dependency>
                     <groupId>org.springframework.security</groupId>
                     <artifactId>spring-security-core-tiger</artifactId>
@@ -222,6 +222,29 @@
                 </plugins>
             </build>
 
+        </profile>
+
+        <profile>
+            <id>messaging</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <configuration>
+                            <webResources>
+                                <resource>
+                                    <directory>src/main/webapp-messaging</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </webResources>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
