@@ -153,20 +153,106 @@
         persistence layer is different (one is using Hibernate, and another
         one uses JPA).</para>
 
-        <para>The application has two main profiles:</para>
+        <para>The application has three distinct profiles:</para>
 
         <para><itemizedlist>
             <listitem>
-              <para>spring-2.5 which builds a Spring 2.5 variant of the
+              <para>spring-2.5 - which builds a Spring 2.5 variant of the
               application</para>
             </listitem>
 
             <listitem>
-              <para>spring-3 which build a Spring 3.0 variant of the
+              <para>spring-3 - which builds a Spring 3.0 variant of the
               application</para>
+            </listitem>
+
+            <listitem>
+              <para>messaging - which builds a JMS-enabled variant of the application</para>
             </listitem>
           </itemizedlist></para>
       </informalexample>
+
+        <para>The first two profiles, <emphasis>spring-2.5</emphasis> and <emphasis>spring-3</emphasis>
+            will select either one of Spring 2.5 and Spring 3 for building the application. This decision has
+        implications on the versions of other modules used in the application, as follows:
+        </para>
+
+        <itemizedlist>
+            <listitem> Spring 2.5 applications will use Spring Webflow 2.0.x and Spring Security 2.0.x;</listitem>
+            <listitem> Spring 3 applications will use Spring Webflow 2.2.x and Spring Security 3.0.x.</listitem>
+        </itemizedlist>
+
+        <para>The <emphasis>messaging</emphasis> profile will be used for enabling and disabling JMS integration, which
+        allows the application to run in JBoss AS profiles that do not provide JMS support such as the Web profile.</para>
+
+        <para>The application can be built using the following pattern:</para>
+
+        <para>Depending upon the set of profiles provided at build time the outcome is as follows:</para>
+
+        <table>
+        <title>Profiles and resulting application setup</title>
+
+        <tgroup cols="2">
+          <thead>
+            <row>
+              <entry align="center">Profiles</entry>
+
+              <entry align="center">Spring Version</entry>
+
+              <entry align="center">JMS integration</entry>
+
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>no -P option (default)</entry>
+
+              <entry>2.5</entry>
+
+              <entry>Yes</entry>
+
+            </row>
+
+              <row>
+                <entry>-Pspring-2.5</entry>
+
+                <entry>2.5</entry>
+
+                <entry>No</entry>
+
+              </row>
+
+              <row>
+                <entry>-Pspring-2.5,messaging</entry>
+
+                <entry>2.5</entry>
+
+                <entry>Yes</entry>
+
+              </row>
+
+              <row>
+                <entry>-Pspring-3</entry>
+
+                <entry>3</entry>
+
+                <entry>No</entry>
+
+              </row>
+
+              <row>
+                <entry>-Pspring-3,messaging</entry>
+
+                <entry>3</entry>
+
+                <entry>Yes</entry>
+
+              </row>
+
+          </tbody>
+        </tgroup>
+      </table>
     </simplesect>
 
     <simplesect>
@@ -290,20 +376,6 @@ mvn -Pdb-setup</programlisting>
       started).</para>
     </simplesect>
 
-    <simplesect>
-      <title>Special configuration for distinct profiles</title>
-
-      <para>The Sportsclub application can be deployed in different JBoss
-      Application Server profiles. Some of these profiles, like for example
-      the Web profile, do not include a message broker, therefore JMS
-      integration features (see dedicated section) must be disabled. In order
-      to disable JMS integration in the Sportsclub application, the file
-      <code>sportsclub-invoicing-webmvc/src/main/webapp/WEB-INF/spring-business-context.xml</code>
-      must be modified by commenting out the following line:<programlisting>&lt;import resource="spring-messaging-context.xml"/&gt;</programlisting></para>
-
-      <para>Uncommenting the line will re-enable the JMS integration
-      features.</para>
-    </simplesect>
   </section>
 
   <section>

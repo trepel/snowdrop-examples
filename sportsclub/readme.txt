@@ -25,11 +25,26 @@ For building & running the application:
 
 mvn clean package
 
-Note: the application can use two different profiles, one for Spring 2.5 and
-one for Spring 3. The default profile is Spring 2.5. For building the Spring 3
-version of the application, use:
+Note:
 
-mvn clean package -Pspring-3
+A) The application uses different profiles for Spring 2.5 and Spring 3.
+The default profile is Spring 2.5.
+
+B) JMS integration can be included in the build or not through the messaging profile
+(active by default). Running the application on platforms which do not contain the
+messaging component (such as the 'web' profile) requires disabling the messaging profile.
+Specifying a set of active profiles
+
+As such, the following profile combinations are possible:
+
+mvn clean package : Spring 2.5, messaging enabled
+mvn clean package -Pspring-2.5 : Spring 2.5, messaging disabled
+mvn clean package -Pspring-3 : Spring 3, messaging disabled
+mvn clean package -Pspring-2.5,messaging : Spring 2.5, messaging enabled
+mvn clean package -Pspring-3,messaging : Spring 2.5, messaging enabled
+
+
+
 
 2. Setup the data source and JMS destination:
 
@@ -98,15 +113,6 @@ Step 3 can be repeated any time in order to reset the database (with the applica
 
 Steps 5,6 do not need to be executed in a particular order, but the database must be started
 before the application is deployed.
-
-8. Special note: JMS integration can be enabled and disabled by commenting and respectively uncommenting
-the following line from sportsclub-invoicing-webmvc/src/main/webapp/WEB-INF/spring-business-context.xml :
-
-<import resource="spring-messaging-context.xml"/>
-
-If the line is commented, then JMS integration will not be enabled. This feature allows to run Sportsclub using
-the JBoss AS Web Profile.
-
 
 Notes:
 
