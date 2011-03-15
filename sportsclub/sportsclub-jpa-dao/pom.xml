@@ -78,9 +78,35 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>3.3.2.GA</version>
             <scope>test</scope>
         </dependency>
+        
+          <!-- JTA and other Hibernate transitive dependencies -->
+        <dependency>
+            <groupId>org.jboss.javaee</groupId>
+            <artifactId>jboss-transaction-api</artifactId>
+        </dependency>
+         <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>    
+            <scope>test</scope>    
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <scope>test</scope>
+        </dependency>
+         <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <scope>test</scope>
+         </dependency>
+         <dependency>
+            <groupId>antlr</groupId>
+            <artifactId>antlr</artifactId>
+            <scope>test</scope>
+         </dependency>
+          
         
     </dependencies>
 

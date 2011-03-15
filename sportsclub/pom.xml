@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+      <groupId>org.jboss.wfk.examples</groupId>
+      <artifactId>wfk-parent</artifactId>
+      <version>1.2-SNAPSHOT</version>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss.snowdrop.samples.sportsclub</groupId>
     <artifactId>sportsclub-parent</artifactId>
@@ -25,13 +32,6 @@
 
     <packaging>pom</packaging>
 
-
-    <properties>
-        <commons-logging.version>1.1.1</commons-logging.version>
-        <richfaces.version>3.3.1.GA</richfaces.version>
-        <snowdrop.version>1.2.0.CR1</snowdrop.version>
-    </properties>
-
     <scm>
         <connection>scm:git:git@github.com:snowdrop/snowdrop-examples.git</connection>
         <developerConnection>scm:git:git@github.com:snowdrop/snowdrop-examples.git</developerConnection>
@@ -40,7 +40,31 @@
 
     <dependencyManagement>
         <dependencies>
+         
+            <dependency>
+               <groupId>org.jboss.wfk.examples</groupId>
+               <artifactId>wfk-wolf-5.1-import</artifactId>
+               <type>pom</type>
+               <version>1.2-SNAPSHOT</version>
+               <scope>import</scope>
+            </dependency>
 
+            <dependency>
+               <groupId>org.jboss.wfk.examples</groupId>
+               <artifactId>wfk-richfaces-import</artifactId>
+               <type>pom</type>
+               <version>1.2-SNAPSHOT</version>
+               <scope>import</scope>
+            </dependency>
+            
+            <dependency>
+               <groupId>org.jboss.wfk.examples</groupId>
+               <artifactId>wfk-jsf-import</artifactId>
+               <type>pom</type>
+               <version>1.2-SNAPSHOT</version>
+               <scope>import</scope>
+            </dependency>
+            
             <dependency>
                 <groupId>org.jboss.snowdrop.samples.sportsclub</groupId>
                 <artifactId>sportsclub-domain</artifactId>
@@ -69,41 +93,6 @@
                 <groupId>org.jboss.snowdrop</groupId>
                 <artifactId>snowdrop-namespace</artifactId>
                 <version>${snowdrop.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.jboss.javaee</groupId>
-                <artifactId>jboss-ejb-api</artifactId>
-                <version>3.0.0.GA</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.jboss.ejb3</groupId>
-                <artifactId>jboss-ejb3-ext-api</artifactId>
-                <version>1.0.0</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>ejb3-persistence</artifactId>
-                <version>1.0.2.GA</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>3.3.1.GA</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-annotations</artifactId>
-                <version>3.4.0.GA</version>
-                <scope>provided</scope>
             </dependency>
 
             <dependency>
@@ -193,12 +182,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.jboss.el</groupId>
-                <artifactId>jboss-el</artifactId>
-                <version>1.0_02.CR5</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-core</artifactId>
                 <version>${spring-security.version}</version>
@@ -283,61 +266,10 @@
             </dependency>
 
             <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>${commons-logging.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.faces</groupId>
-                <artifactId>jsf-api</artifactId>
-                <version>1.2_13</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.faces</groupId>
-                <artifactId>jsf-impl</artifactId>
-                <version>1.2_13</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>jstl</artifactId>
-                <version>1.1.2</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.sun.facelets</groupId>
-                <artifactId>jsf-facelets</artifactId>
-                <version>1.1.15.B1</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.richfaces.framework</groupId>
-                <artifactId>richfaces-api</artifactId>
-                <version>${richfaces.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.richfaces.ui</groupId>
-                <artifactId>richfaces-ui</artifactId>
-                <version>${richfaces.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>hsqldb</groupId>
-                <artifactId>hsqldb</artifactId>
-                <version>1.8.0.10</version>
             </dependency>
 
             <dependency>
@@ -440,12 +372,12 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <properties>
-                <spring.version>2.5.6.SEC02</spring.version>
-                <junit.version>4.4</junit.version>
-                <spring-security.version>2.0.6.RELEASE</spring-security.version>
-                <spring-webflow.version>2.0.9.RELEASE</spring-webflow.version>
+            
+            <!-- Spring versions are retrieved from wfk-parent -->
+            <properties> 
+                <junit.version>4.4</junit.version>              
             </properties>
+            
             <dependencyManagement>
                 <dependencies>
                     <dependency>
@@ -480,12 +412,12 @@
         </profile>
         <profile>
             <id>spring-3</id>
+            
+            <!-- Spring versions are retrieved from wfk-parent -->
             <properties>
-                <spring.version>3.0.5.RELEASE</spring.version>
                 <junit.version>4.6</junit.version>
-                <spring-security.version>3.0.2.RELEASE</spring-security.version>
-                <spring-webflow.version>2.2.1.RELEASE</spring-webflow.version>
             </properties>
         </profile>
+        
     </profiles>
 </project>

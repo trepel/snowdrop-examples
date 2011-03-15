@@ -72,6 +72,26 @@
             <groupId>org.hibernate</groupId>
             <artifactId>ejb3-persistence</artifactId>
         </dependency>
+        
+        <!-- JTA and other Hibernate transitive dependencies -->
+        <dependency>
+            <groupId>org.jboss.javaee</groupId>
+            <artifactId>jboss-transaction-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>        
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+        </dependency>
+         <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+         </dependency>
+        
+        
 
         <dependency>
             <groupId>org.slf4j</groupId>
