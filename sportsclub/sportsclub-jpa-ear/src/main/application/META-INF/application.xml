@@ -5,20 +5,20 @@
 <application>
   <display-name>Sports Club Sample Application</display-name>
   <module>
-    <ejb>sportsclub-subscriptions-ejb-1.0-SNAPSHOT.jar</ejb>
+    <ejb>sportsclub-subscriptions-ejb-1.2.0.CR2.jar</ejb>
   </module>
   <module>
-    <ejb>sportsclub-invoicing-ejb-1.0-SNAPSHOT.jar</ejb>
+    <ejb>sportsclub-invoicing-ejb-1.2.0.CR2.jar</ejb>
   </module>
   <module>
     <web>
-      <web-uri>sportsclub-subscriptions-web-1.0-SNAPSHOT.war</web-uri>
+      <web-uri>sportsclub-subscriptions-web-1.2.0.CR2.war</web-uri>
       <context-root>/sportsclub/subscriptions</context-root>
     </web>
   </module>
   <module>
     <web>
-      <web-uri>sportsclub-reservations-web-1.0-SNAPSHOT.war</web-uri>
+      <web-uri>sportsclub-reservations-web-1.2.0.CR2.war</web-uri>
       <context-root>/sportsclub/reservations</context-root>
     </web>
   </module>
