@@ -152,49 +152,5 @@
       </plugin>
     </plugins>
   </build>
-  
-  <profiles>
-          <!-- WFK container profiles -->
-        <profile>
-            <id>eap-jboss5</id>
-            
-            <build>
-               <plugins>
-                  <plugin>
-                     <groupId>org.apache.maven.plugins</groupId>
-                     <artifactId>maven-antrun-plugin</artifactId>
-                  </plugin>
-                  <plugin>
-                     <groupId>org.apache.maven.plugins</groupId>
-                     <artifactId>maven-clean-plugin</artifactId>
-                  </plugin>
-               </plugins>
-            </build> 
-        </profile>
-        <profile>
-            <id>ewp-jboss5</id>
-            
-            <build>
-               <plugins>
-                  <plugin>
-                     <groupId>org.apache.maven.plugins</groupId>
-                     <artifactId>maven-antrun-plugin</artifactId>
-                  </plugin>
-                  <plugin>
-                     <groupId>org.apache.maven.plugins</groupId>
-                     <artifactId>maven-clean-plugin</artifactId>
-                  </plugin>
-               </plugins>
-            </build> 
-        </profile>
-        
-        <profile>
-            <id>ws-native</id>
-        </profile>
-        
-        <profile>
-            <id>ws-cxf</id>
-        </profile>
-   </profiles>
-
+ 
 </project>

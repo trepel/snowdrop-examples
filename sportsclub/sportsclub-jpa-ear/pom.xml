@@ -217,14 +217,7 @@
                   </plugin>
                </plugins>
             </build> 
-        </profile>
-        
-        <profile>
-            <id>ws-native</id>
-        </profile>
-        
-        <profile>
-            <id>ws-cxf</id>
-        </profile>
+        </profile>        
+  
     </profiles>
 </project>
