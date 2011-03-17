@@ -40,16 +40,19 @@
         <dependency>
             <groupId>javax.faces</groupId>
             <artifactId>jsf-api</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>javax.faces</groupId>
             <artifactId>jsf-impl</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -60,11 +63,13 @@
         <dependency>
             <groupId>org.jboss.javaee</groupId>
             <artifactId>jboss-ejb-api</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
            <groupId>org.hibernate</groupId>
            <artifactId>ejb3-persistence</artifactId>
+           <scope>provided</scope>
         </dependency>
 
         <dependency>

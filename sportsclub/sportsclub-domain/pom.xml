@@ -14,16 +14,19 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>ejb3-persistence</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
           <groupId>org.hibernate</groupId>
           <artifactId>hibernate-annotations</artifactId>
+          <scope>provided</scope>
        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

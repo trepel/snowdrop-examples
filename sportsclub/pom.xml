@@ -75,35 +75,30 @@
                 <groupId>org.jboss.javaee</groupId>
                 <artifactId>jboss-ejb-api</artifactId>
                 <version>3.0.0.GA</version>
-                <scope>provided</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.jboss.ejb3</groupId>
                 <artifactId>jboss-ejb3-ext-api</artifactId>
                 <version>1.0.0</version>
-                <scope>provided</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>ejb3-persistence</artifactId>
                 <version>1.0.2.GA</version>
-                <scope>provided</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
                 <version>3.3.1.GA</version>
-                <scope>provided</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-annotations</artifactId>
                 <version>3.4.0.GA</version>
-                <scope>provided</scope>
             </dependency>
 
             <dependency>
@@ -189,7 +184,6 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
-                <scope>test</scope>
             </dependency>
 
             <dependency>
@@ -292,28 +286,24 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
-                <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>javax.faces</groupId>
                 <artifactId>jsf-api</artifactId>
                 <version>1.2_13</version>
-                <scope>provided</scope>
             </dependency>
 
             <dependency>
                 <groupId>javax.faces</groupId>
                 <artifactId>jsf-impl</artifactId>
                 <version>1.2_13</version>
-                <scope>provided</scope>
             </dependency>
 
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>jstl</artifactId>
                 <version>1.1.2</version>
-                <scope>provided</scope>
             </dependency>
 
             <dependency>
@@ -344,17 +334,13 @@
                 <groupId>commons-dbcp</groupId>
                 <artifactId>commons-dbcp</artifactId>
                 <version>1.2.2</version>
-                <scope>test</scope>
             </dependency>
 
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -375,6 +361,7 @@
             <version>3.11.0.GA</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -440,12 +427,15 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            
+            <!-- Spring versions are retrieved from wfk-parent -->
             <properties>
                 <spring.version>2.5.6.SEC02</spring.version>
                 <junit.version>4.4</junit.version>
                 <spring-security.version>2.0.6.RELEASE</spring-security.version>
                 <spring-webflow.version>2.0.9.RELEASE</spring-webflow.version>
             </properties>
+            
             <dependencyManagement>
                 <dependencies>
                     <dependency>
@@ -480,6 +470,8 @@
         </profile>
         <profile>
             <id>spring-3</id>
+            
+            <!-- Spring versions are retrieved from wfk-parent -->
             <properties>
                 <spring.version>3.0.5.RELEASE</spring.version>
                 <junit.version>4.6</junit.version>
@@ -487,5 +479,6 @@
                 <spring-webflow.version>2.2.1.RELEASE</spring-webflow.version>
             </properties>
         </profile>
+        
     </profiles>
 </project>
