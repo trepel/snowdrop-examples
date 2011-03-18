@@ -34,7 +34,11 @@
             <artifactId>hibernate-core</artifactId>
             <scope>provided</scope>
         </dependency>
-        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
         
         <dependency>
             <groupId>org.jboss.javaee</groupId>
