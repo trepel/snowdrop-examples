@@ -19,6 +19,7 @@ import java.io.IOException;
 
 /**
  * @author <a href="mailto:lvlcek@redhat.com">Lukas Vlcek</a>
+ * @author <a href="mailto:mariusb@redhat.com">Marius Bogoevici</a>
  */
 public class EquipmentFilter extends AbstractExtendedDataModelHelper implements Serializable
 {
@@ -41,14 +42,7 @@ public class EquipmentFilter extends AbstractExtendedDataModelHelper implements 
 
    public Long getCurrentRowCount()
    {
-      if (reservation.getFrom() == null && reservation.getTo() == null)
-      {
-         return equipmentService.countAllEquipments();
-      }
-      else
-      {
-         return equipmentService.countUnreservedEquipmentsForRange(reservation.getFrom(), reservation.getTo(), null);
-      }
+      return equipmentService.countAllEquipments();
    }
 
    public void walk(FacesContext facesContext, DataVisitor dataVisitor, Range range, Object argument) throws IOException
@@ -56,14 +50,7 @@ public class EquipmentFilter extends AbstractExtendedDataModelHelper implements 
       int firstResult = ((SequenceRange) range).getFirstRow();
       int maxResults = ((SequenceRange) range).getRows();
       List<Equipment> equipments = null;
-      if (reservation.getFrom() == null && reservation.getFrom() == null)
-      {
-         equipments = (List<Equipment>) equipmentService.getAllEquipments(firstResult, maxResults);
-      }
-      else
-      {
-         equipments = equipmentService.getUnreservedEquipments(reservation.getFrom(), reservation.getTo(), firstResult, maxResults, null);
-      }
+      equipments = (List<Equipment>) equipmentService.getAllEquipments(firstResult, maxResults);
       for (Equipment e : equipments)
       {
          Long id = e.getId();
