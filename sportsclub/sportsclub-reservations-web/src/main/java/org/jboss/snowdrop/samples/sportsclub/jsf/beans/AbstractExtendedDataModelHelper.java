@@ -12,7 +12,7 @@ import org.richfaces.model.selection.Selection;
  */
 public abstract class AbstractExtendedDataModelHelper extends ExtendedDataModel
 {
-   private int currentPage;
+   private int currentPage = 1;
    private int currentRow;
    private Long currentId;
    private Long currentRowCount;
