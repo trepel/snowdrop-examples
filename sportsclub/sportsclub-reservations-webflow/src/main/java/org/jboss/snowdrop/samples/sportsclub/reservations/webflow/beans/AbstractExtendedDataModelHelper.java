@@ -9,10 +9,11 @@ import org.richfaces.model.selection.Selection;
  * Abstract helper class for JSF backing beans serving {#link ExtendedDataModel} implementations. 
  *
  * @author <a href="mailto:lvlcek@redhat.com">Lukas Vlcek</a>
+ * @author <a href="mailto:mariusb@redhat.com">Marius Bogoevici</a>
  */
 public abstract class AbstractExtendedDataModelHelper extends ExtendedDataModel
 {
-   private int currentPage;
+   private int currentPage = 1;
    private int currentRow;
    private Long currentId;
    private Long currentRowCount;

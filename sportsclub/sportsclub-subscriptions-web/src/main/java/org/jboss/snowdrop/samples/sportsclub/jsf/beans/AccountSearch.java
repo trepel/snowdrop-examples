@@ -27,7 +27,7 @@ public class AccountSearch extends ExtendedDataModel
 
    private String name;
 
-   private int currentPage;
+   private int currentPage =  1;
    private int currentRow;
    private Long currentId;
 
