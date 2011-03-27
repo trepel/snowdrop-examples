@@ -103,7 +103,7 @@ public class Account implements Serializable
             timeInterval.setEndDate(calendar.getTime());
             break;
          case WEEKLY:
-            calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+            calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
             timeInterval.setStartDate(calendar.getTime());
             calendar.add(Calendar.DAY_OF_MONTH, 6);
             timeInterval.setEndDate(calendar.getTime());
@@ -112,7 +112,7 @@ public class Account implements Serializable
             long duration = normalizedDate.getTime() - getCreationDate().getTime();
             long intervals = duration / TimeInterval.TWO_WEEKS;
             calendar.setTime(getCreationDate());
-            calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+            calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
             calendar.add(Calendar.DAY_OF_MONTH, (int)intervals * 14);
             timeInterval.setStartDate(calendar.getTime());
             calendar.add(Calendar.DAY_OF_MONTH, 13);
