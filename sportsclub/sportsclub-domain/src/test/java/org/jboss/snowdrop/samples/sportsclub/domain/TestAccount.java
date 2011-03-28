@@ -1,6 +1,8 @@
 package org.jboss.snowdrop.samples.sportsclub.domain;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Account;
@@ -83,6 +85,32 @@ public class TestAccount
       final TimeInterval timeInterval = account.getBillingPeriodFor(currentDate);
       Assert.assertTrue(timeInterval.contains(currentDate));
    }
+   
+   @Test
+   public void testBiweeklyOnSunday() throws ParseException
+   {
+      Account account = createAccount(BillingType.BIWEEKLY, BigDecimal.valueOf(260l));
+      SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm");
+      
+      
+      Date sundayDate = formatter.parse("27-03-2011 16:25");
+      final TimeInterval timeInterval = account.getBillingPeriodFor(sundayDate);
+      Assert.assertTrue(timeInterval.contains(sundayDate));
+   }
+   
+   @Test
+   public void testBiweeklyOnSundayEarlyHours() throws ParseException
+   {
+      Account account = createAccount(BillingType.BIWEEKLY, BigDecimal.valueOf(260l));
+      SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm");
+      
+      
+      Date sundayDate = formatter.parse("27-03-2011 6:25");
+      final TimeInterval timeInterval = account.getBillingPeriodFor(sundayDate);
+      Assert.assertTrue(timeInterval.contains(sundayDate));
+   }
+   
+   
 
    private Account createAccount(BillingType billingType, BigDecimal amount)
    {
