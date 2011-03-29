@@ -17,11 +17,11 @@ public class TimeInterval implements Serializable
    public static final TimeZone TIME_ZONE = TimeZone.getTimeZone("EST");
 
    public static final long TWO_WEEKS = (14 * 24 * 3600 * 1000);
+   public static final long DAY = 24 * 3600 * 1000;
 
    private Date startDate;
 
    private Date endDate;
-
 
    public Date getEndDate()
    {
@@ -30,7 +30,7 @@ public class TimeInterval implements Serializable
 
    public void setEndDate(Date endDate)
    {
-      this.endDate = DateUtils.normalizeDate(endDate,TIME_ZONE);
+      this.endDate = endDate;
    }
 
    public Date getStartDate()
@@ -40,12 +40,11 @@ public class TimeInterval implements Serializable
 
    public void setStartDate(Date startDate)
    {
-      this.startDate = DateUtils.normalizeDate(startDate,TIME_ZONE);
+      this.startDate = startDate;
    }
 
    public boolean contains(Date someDate)
    {
-      Date normalizeDate = DateUtils.normalizeDate(someDate,TIME_ZONE);
-      return normalizeDate.compareTo(startDate) >= 0 && normalizeDate.compareTo(endDate)<=0;
+      return someDate.compareTo(startDate) >= 0 && someDate.compareTo(endDate)<=0;
    }
 }

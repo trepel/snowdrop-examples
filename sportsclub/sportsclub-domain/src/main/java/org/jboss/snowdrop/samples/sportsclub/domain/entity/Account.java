@@ -98,15 +98,15 @@ public class Account implements Serializable
       {
          case MONTHLY:
             calendar.set(Calendar.DAY_OF_MONTH, 1);
-            timeInterval.setStartDate(calendar.getTime());
+            timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
             calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
-            timeInterval.setEndDate(calendar.getTime());
+            timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
             break;
          case WEEKLY:
             calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
-            timeInterval.setStartDate(calendar.getTime());
+            timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
             calendar.add(Calendar.DAY_OF_MONTH, 6);
-            timeInterval.setEndDate(calendar.getTime());
+            timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
             break;
          case BIWEEKLY:
             long duration = normalizedDate.getTime() - getCreationDate().getTime();
@@ -114,9 +114,9 @@ public class Account implements Serializable
             calendar.setTime(getCreationDate());
             calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
             calendar.add(Calendar.DAY_OF_MONTH, (int)intervals * 14);
-            timeInterval.setStartDate(calendar.getTime());
+            timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
             calendar.add(Calendar.DAY_OF_MONTH, 13);
-            timeInterval.setEndDate(calendar.getTime());
+            timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
             break;
          default:
             throw new IllegalArgumentException("Invalid BillingType value for account:" + billingType);
