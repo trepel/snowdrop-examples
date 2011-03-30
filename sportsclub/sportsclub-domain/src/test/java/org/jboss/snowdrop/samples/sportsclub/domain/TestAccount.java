@@ -93,10 +93,10 @@ public class TestAccount
    public void testBiweeklyOnSunday() throws ParseException
    {
       Account account = createAccount(BillingType.BIWEEKLY, BigDecimal.valueOf(260l));
-      SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm");
+      SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm z");
 
 
-      Date sundayDate = formatter.parse("27-03-2011 16:25");
+      Date sundayDate = formatter.parse("27-03-2011 16:25 CET");
       final TimeInterval timeInterval = account.getBillingPeriodFor(sundayDate);
       Assert.assertTrue(timeInterval.contains(sundayDate));
    }
@@ -105,10 +105,10 @@ public class TestAccount
    public void testBiweeklyOnSundayEarlyHours() throws ParseException
    {
       Account account = createAccount(BillingType.BIWEEKLY, BigDecimal.valueOf(260l));
-      SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm");
+      SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm z");
 
 
-      Date sundayDate = formatter.parse("27-03-2011 6:25");
+      Date sundayDate = formatter.parse("27-03-2011 6:25 CET");
       final TimeInterval timeInterval = account.getBillingPeriodFor(sundayDate);
       Assert.assertTrue(timeInterval.contains(sundayDate));
    }
