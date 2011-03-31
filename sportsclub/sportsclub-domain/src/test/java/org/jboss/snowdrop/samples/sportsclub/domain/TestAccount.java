@@ -13,6 +13,7 @@ import org.jboss.snowdrop.samples.sportsclub.domain.entity.Membership;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Name;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Person;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.TimeInterval;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -22,10 +23,12 @@ import org.junit.Test;
 public class TestAccount
 {
 
+   private final SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm z");
+
    @Test
-   public void testTimeInterval()
+   public void testTimeInterval() throws Exception
    {
-      Date currentDate = new Date();
+      Date currentDate = formatter.parse("01-01-2011 03:00 EST");
 
       TimeInterval ti1 = new TimeInterval();
       ti1.setStartDate(new Date(currentDate.getTime() - 1 * DAY));
@@ -59,13 +62,59 @@ public class TestAccount
    }
 
    @Test
-   public void testMonthly()
+   public void testMonthlyStartOfMonthCET() throws Exception
    {
       Account account = createAccount(BillingType.MONTHLY, BigDecimal.valueOf(120l));
 
-      Date currentDate = new Date();
+      SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm z");
+
+      Date date = formatter.parse("01-03-2011 6:25 CET");
+      final TimeInterval timeInterval = account.getBillingPeriodFor(date);
+      Assert.assertTrue(timeInterval.contains(date));
+   }
+
+   @Test
+   public void testMonthlyStartOfMonthEST() throws Exception
+   {
+      Account account = createAccount(BillingType.MONTHLY, BigDecimal.valueOf(120l));
+
+
+      Date date = formatter.parse("01-03-2011 6:25 EST");
+      final TimeInterval timeInterval = account.getBillingPeriodFor(date);
+      Assert.assertTrue(timeInterval.contains(date));
+   }
+
+
+   @Test
+   public void testMonthlyMidMonth() throws Exception
+   {
+      Account account = createAccount(BillingType.MONTHLY, BigDecimal.valueOf(120l));
+
+      Date currentDate =  formatter.parse("15-03-2011 01:15 EST");
       final TimeInterval timeInterval = account.getBillingPeriodFor(currentDate);
       Assert.assertTrue(timeInterval.contains(currentDate));
+   }
+
+   @Test
+   public void testMonthlyEndOfMonthCET() throws Exception
+   {
+      Account account = createAccount(BillingType.MONTHLY, BigDecimal.valueOf(120l));
+
+
+      Date date = formatter.parse("31-03-2011 16:25 CET");
+      final TimeInterval timeInterval = account.getBillingPeriodFor(date);
+      Assert.assertTrue(timeInterval.contains(date));
+   }
+
+   @Test
+   public void testMonthlyEndOfMonthEST() throws Exception
+   {
+      Account account = createAccount(BillingType.MONTHLY, BigDecimal.valueOf(120l));
+
+
+      Date date = formatter.parse("31-03-2011 16:25 EST");
+      final TimeInterval timeInterval = account.getBillingPeriodFor(date);
+      Assert.assertTrue(timeInterval.contains(date));
    }
 
    @Test
@@ -93,7 +142,6 @@ public class TestAccount
    public void testBiweeklyOnSunday() throws ParseException
    {
       Account account = createAccount(BillingType.BIWEEKLY, BigDecimal.valueOf(260l));
-      SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm z");
 
 
       Date sundayDate = formatter.parse("27-03-2011 16:25 CET");
@@ -105,7 +153,6 @@ public class TestAccount
    public void testBiweeklyOnSundayEarlyHours() throws ParseException
    {
       Account account = createAccount(BillingType.BIWEEKLY, BigDecimal.valueOf(260l));
-      SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm z");
 
 
       Date sundayDate = formatter.parse("27-03-2011 6:25 CET");

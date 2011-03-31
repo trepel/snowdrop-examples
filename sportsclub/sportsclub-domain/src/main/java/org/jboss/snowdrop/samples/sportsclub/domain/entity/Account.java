@@ -99,7 +99,7 @@ public class Account implements Serializable
          case MONTHLY:
             calendar.set(Calendar.DAY_OF_MONTH, 1);
             timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
-            calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+            calendar.add(Calendar.MONTH, 1);
             timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
             break;
          case WEEKLY:
