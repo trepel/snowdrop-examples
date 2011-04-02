@@ -1,6 +1,8 @@
 package org.jboss.snowdrop.samples.sportsclub.ws;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 import java.math.BigDecimal;
 
@@ -19,7 +21,7 @@ public class PaymentNotificationService extends SpringBeanAutowiringSupport
    private PaymentProcessor paymentProcessor;
 
    @WebMethod
-   public Long notifyPayment(Long accountNumber, BigDecimal amount)
+   public Long notifyPayment(@WebParam(name="accountNumber") Long accountNumber, @WebParam(name="amount") BigDecimal amount)
    {
       return paymentProcessor.processPayment(accountNumber, amount);
    }

@@ -41,6 +41,19 @@
      </init-param>
    </servlet>
 
+    <servlet>
+      <servlet-name>spring-ws-servlet</servlet-name>
+      <servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
+      <init-param>
+         <param-name>contextClass</param-name>
+         <param-value>org.jboss.spring.vfs.context.VFSXmlWebApplicationContext</param-value>
+      </init-param>
+     <init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>/WEB-INF/spring-ws-config.xml</param-value>
+     </init-param>
+   </servlet>
+
    <servlet>
        <servlet-name>PaymentNotificationService</servlet-name>
        <servlet-class>org.jboss.snowdrop.samples.sportsclub.ws.PaymentNotificationService</servlet-class>
@@ -49,6 +62,12 @@
    <servlet-mapping>
       <servlet-name>spring-mvc-servlet</servlet-name>
       <url-pattern>*.do</url-pattern>
+   </servlet-mapping>
+
+
+   <servlet-mapping>
+      <servlet-name>spring-ws-servlet</servlet-name>
+      <url-pattern>/spring-ws/payment</url-pattern>
    </servlet-mapping>
 
    <servlet-mapping>

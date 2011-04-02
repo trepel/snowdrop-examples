@@ -122,16 +122,4 @@
         </repository>
     </repositories>
 
-    <profiles>
-        <profile>
-            <id>spring-2.5</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>spring-3</id>
-        </profile>
-
-    </profiles>
 </project>

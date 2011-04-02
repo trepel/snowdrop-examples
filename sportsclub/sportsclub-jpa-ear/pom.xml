@@ -172,6 +172,14 @@
                     <groupId>org.jboss.el</groupId>
                     <artifactId>jboss-el</artifactId>
                 </dependency>
+                <dependency>
+                    <groupId>org.springframework.ws</groupId>
+                    <artifactId>spring-ws-core</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework.ws</groupId>
+                    <artifactId>spring-ws-core-tiger</artifactId>
+                </dependency>
             </dependencies>
         </profile>
 
@@ -186,6 +194,19 @@
                     <groupId>org.springframework.security</groupId>
                     <artifactId>spring-security-web</artifactId>
                 </dependency>
+
+                <dependency>
+                    <groupId>org.springframework.ws</groupId>
+                    <artifactId>spring-ws-core</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework.ws</groupId>
+                    <artifactId>spring-ws-core-tiger</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-oxm</artifactId>
+               </dependency>
             </dependencies>
         </profile>
         
