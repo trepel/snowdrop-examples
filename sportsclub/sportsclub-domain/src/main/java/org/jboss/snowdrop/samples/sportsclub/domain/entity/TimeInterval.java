@@ -30,7 +30,7 @@ public class TimeInterval implements Serializable
 
    public void setEndDate(Date endDate)
    {
-      this.endDate = endDate;
+      this.endDate = DateUtils.normalizeDate(endDate, TIME_ZONE);
    }
 
    public Date getStartDate()
@@ -40,11 +40,12 @@ public class TimeInterval implements Serializable
 
    public void setStartDate(Date startDate)
    {
-      this.startDate = startDate;
+      this.startDate = DateUtils.normalizeDate(startDate, TIME_ZONE);
    }
 
    public boolean contains(Date someDate)
    {
-      return someDate.compareTo(startDate) >= 0 && someDate.compareTo(endDate)<0;
+      Date normalizeDate = DateUtils.normalizeDate(someDate,TIME_ZONE);
+      return normalizeDate.compareTo(startDate) >= 0 && normalizeDate.compareTo(endDate)<=0;
    }
 }
