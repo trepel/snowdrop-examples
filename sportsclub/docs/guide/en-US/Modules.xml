@@ -171,6 +171,16 @@
             </row>
 
             <row>
+              <entry></entry>
+
+              <entry>A Spring Web Services-based variant of the JAX-WS
+              example</entry>
+
+              <entry>The application implements a web service based on Spring
+              Web Services.</entry>
+            </row>
+
+            <row>
               <entry>Security</entry>
 
               <entry>Application-server pre-authentication</entry>
@@ -1220,20 +1230,35 @@ public class PaymentAuditor
     </section>
 
     <section>
-      <title>Payment processing: exposing a JAX-WS web service</title>
+      <title>Payment processing: exposing a web service</title>
 
       <para>Another way of interacting with external applications, is by
       exposing a web service. In this scenario, payment notifications may not
       arrive only as asynchronous events on a message queue, but also as
       synchronous web service invocations. For this purpose, the application
-      will expose a Spring bean with JAX-WS annotations as a web
-      service.</para>
+      will implement two web services using two different technologies:
+      </para>
 
-      <para>To that end, a JAX-WS annotated class is provided by the
-      application:</para>
+      <itemizedlist>
+        <listitem>
+          <para>a Spring-injected JAX-WS-based web service
+          (contract-first);</para>
+        </listitem>
 
-      <informalexample>
-        <para><programlisting>@WebService
+        <listitem>
+          <para>a complete Spring Web Services-based implementation
+          (contract-last);</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>Using a JAX-WS web service</title>
+
+        <para>In this scenario, a JAX-WS annotated class is provided by the
+        application:</para>
+
+        <informalexample>
+          <para><programlisting>@WebService
 public class PaymentNotificationService extends SpringBeanAutowiringSupport
 {
 
@@ -1247,15 +1272,15 @@ public class PaymentNotificationService extends SpringBeanAutowiringSupport
    }
 
 }</programlisting>By extending SpringBeanAutowiringSupport, the class
-        PaymentNotificationService will be injected automatically with the
-        same PaymentProcessor instance that is used by the JMS notification
-        processor, and defined in the application context created from
-        WEB-INF/spring-business-context.xml. This is necessary, because no
-        bean of the type PaymentNotificationService is defined in the
-        application context. Instead, the web service is defined and mapped as
-        a servlet in /WEB-INF/web.xml:</para>
+          PaymentNotificationService will be injected automatically with the
+          same PaymentProcessor instance that is used by the JMS notification
+          processor, and defined in the application context created from
+          WEB-INF/spring-business-context.xml. This is necessary, because no
+          bean of the type PaymentNotificationService is defined in the
+          application context. Instead, the web service is defined and mapped
+          as a servlet in /WEB-INF/web.xml:</para>
 
-        <para><programlisting>&lt;servlet&gt;
+          <para><programlisting>&lt;servlet&gt;
        &lt;servlet-name&gt;PaymentNotificationService&lt;/servlet-name&gt;
        &lt;servlet-class&gt;org.jboss.snowdrop.samples.sportsclub.ws.PaymentNotificationService&lt;/servlet-class&gt;
    &lt;/servlet&gt;
@@ -1264,10 +1289,103 @@ public class PaymentNotificationService extends SpringBeanAutowiringSupport
        &lt;servlet-name&gt;PaymentNotificationService&lt;/servlet-name&gt;
        &lt;url-pattern&gt;/ws/payment&lt;/url-pattern&gt;
    &lt;/servlet-mapping&gt;</programlisting>As a result, the a JAX-WS web
-        service can be accessed at http://localhost:8080/ws/payment. The
-        service can be tested using a free SOAP testing tool such as SOAP
-        UI.</para>
-      </informalexample>
+          service can be accessed at http://localhost:8080/ws/payment. The
+          service can be tested using a free SOAP testing tool such as SOAP
+          UI.</para>
+        </informalexample>
+      </section>
+
+      <section>
+        <title>Implementing a Spring Web Services web service</title>
+
+        <para>Spring Web Services is focused on implementing contract-first
+        web services, as opposed to the contract-last approach taken in the
+        JAX-WS example (although it should be noted that JAX-WS can support
+        contract-last web services too). In the contract-first development
+        style, the WSDL and request/reply document schemas are produced first,
+        and define the contract between the service client and implementor. It
+        is the responsibility of the service supplier to handle the request
+        and reply documents appropriately. </para>
+
+        <para></para>
+
+        <para>The structure of the Spring-WS based web service is similar to a
+        Spring MVC application. The entry point is a distinct type of
+        dispatcher servlet, backed by an application context definition, as
+        follows (Spring 3-based applications may omit the VFS-ready
+        application context declaration):</para>
+
+        <informalexample>
+          <para><programlisting>&lt;servlet&gt;
+  &lt;servlet-name&gt;spring-ws-servlet&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;org.springframework.ws.transport.http.MessageDispatcherServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;contextClass&lt;/param-name&gt;
+      &lt;param-value&gt;org.jboss.spring.vfs.context.VFSXmlWebApplicationContext&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+         &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+         &lt;param-value&gt;/WEB-INF/spring-ws-config.xml&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+   &lt;servlet-name&gt;spring-ws-servlet&lt;/servlet-name&gt;
+   &lt;url-pattern&gt;/spring-ws/payment&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</programlisting></para>
+        </informalexample>
+
+        <para> The actual endpoint that handles the SOAP requests is defined
+        as follows:</para>
+
+        <informalexample>
+          <para><programlisting>@Endpoint
+public class PaymentNotificationHandler
+{
+   @Autowired
+   private PaymentProcessor paymentProcessor;
+
+   @PayloadRoot(localPart = "notifyPayment", namespace = "http://ws.sportsclub.samples.snowdrop.jboss.org/")
+   public PaymentResponse notifyPayment(PaymentRequest paymentNotification)
+   {
+      Long paymentId = paymentProcessor.processPayment(paymentNotification.getAccountNumber(), paymentNotification.getAmount());
+      return new PaymentResponse(paymentId);
+   }
+
+}</programlisting></para>
+
+          <para>The @Endpoint annotation indicatest that this class contains
+          web service endpoint methods and allows for this component to be
+          detected as a Spring bean through classpath scanning. The
+          @PayloadRoot anotation indicates that any SOAP request submitted to
+          the dispatcher servlet will be routed to the notifyPayment method if
+          the root element of the payload is<code>
+          {http://ws.sportsclub.samples.snowdrop.jboss.org/}notifyPayment</code>.
+          The request payload will be automatically unmarshalled in a
+          PaymentRequest object sent as argument to the method. The return
+          value is a PaymentResponse object which will be automatically
+          marshalled as XML content and will become the payload of the SOAP
+          response that gets sent back. IThe Spring Web Services configuration
+          indicates that a JAXB marshaller should be used specifically in this
+          case.</para>
+
+          <informalexample>
+            <para><programlisting>&lt;bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller"&gt;
+        &lt;property name="classesToBeBound"&gt;
+            &lt;list&gt;
+                &lt;value&gt;org.jboss.snowdrop.samples.sportsclub.ws.PaymentRequest&lt;/value&gt;
+                &lt;value&gt;org.jboss.snowdrop.samples.sportsclub.ws.PaymentResponse&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;</programlisting></para>
+          </informalexample>
+
+          <para>The detailed application context definition can be found in
+          the src/webapp/WEB-INF/spring-ws-config.xml file of the context
+          configuration. The web service can be accessed at </para>
+        </informalexample>
+      </section>
     </section>
 
     <section>
@@ -1363,7 +1481,7 @@ INSERT INTO ROLES VALUES ('employee','EMPLOYEE')
           /WEB-INF/spring-security-context.xml. Because the application can be
           built either with Spring 2.5 and Spring 3, it will also use
           different Spring Security versions. Because of package name changes
-          from Spring Security 2 to Spring Security 3, the </para>
+          from Spring Security 2 to Spring Security 3, the</para>
 
           <para>Of specific interest to our application is the
           filterSecurityInterceptor bean definition, which contains the access

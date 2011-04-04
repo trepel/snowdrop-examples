@@ -6,31 +6,27 @@
 ]>
 <chapter id="chap-guide-Test_Chapter">
   <title>Introduction</title>
-  
-  <para>
-    The Sports Club application provides a real world-inspired example of
-    integrating Spring with the JBoss Entprise Platforms. It consists of
-    three web applications, which illustrate several use cases through
-    various combinations of components and technologies. It also illustrates
-    how to use the Snowdrop libraries to provide JBoss-specific features,
-    such as creating a standalone deployment of an <classname>ApplicationContext</classname>
-    and injecting beans from that application context into non-Spring
-    components like Enterprise Java Beans (EJB).
-  </para>
 
-  <para>
-    This book aims to illustrate the mechanics of using Spring with different
-    Java EE 5 components in the specific context of the JBoss Enterprise Platforms,
-    and to recommend methods of achieving certain integration goals.
-  </para>
+  <para>The Sports Club application provides a real world-inspired example of
+  integrating Spring with the JBoss Entprise Platforms. It consists of three
+  web applications, which illustrate several use cases through various
+  combinations of components and technologies. It also illustrates how to use
+  the Snowdrop libraries to provide JBoss-specific features, such as creating
+  a standalone deployment of an <classname>ApplicationContext</classname> and
+  injecting beans from that application context into non-Spring components
+  like Enterprise Java Beans (EJB).</para>
 
-  <para>
-    The Sports Club example is not intended as a guide to creating a domain model.
-    Detailing the various layers of application and UI design is outside the scope
-    of this document. As such, the example application has been designed to
-    illustrate integration use cases, rather than to demonstrate a domain model 
-    that strictly follows principles of object-oriented and domain-driven design.
-  </para>
+  <para>This book aims to illustrate the mechanics of using Spring with
+  different Java EE 5 components in the specific context of the JBoss
+  Enterprise Platforms, and to recommend methods of achieving certain
+  integration goals.</para>
+
+  <para>The Sports Club example is not intended as a guide to creating a
+  domain model. Detailing the various layers of application and UI design is
+  outside the scope of this document. As such, the example application has
+  been designed to illustrate integration use cases, rather than to
+  demonstrate a domain model that strictly follows principles of
+  object-oriented and domain-driven design.</para>
 
   <!--<para>The example is not intended to be a guide on creating a domain model,
   breaking down the various layers of the application or on UI design. While
@@ -43,11 +39,9 @@
   applications use this particular design, and we have employed it to
   illustrate the technical integration use cases.</para>-->
 
-  <para>
-    The Sports Club example uses RichFaces as a component library for 
-    JavaServer Faces (JSF). Consult the RichFaces documentation for RichFaces-specific
-    information.
-  </para>
+  <para>The Sports Club example uses RichFaces as a component library for
+  JavaServer Faces (JSF). Consult the RichFaces documentation for
+  RichFaces-specific information.</para>
 
   <section>
     <title>Prerequisites: making sure you have all you need</title>
@@ -167,32 +161,42 @@
             </listitem>
 
             <listitem>
-              <para>messaging - which builds a JMS-enabled variant of the application</para>
+              <para>messaging - which builds a JMS-enabled variant of the
+              application</para>
             </listitem>
           </itemizedlist></para>
       </informalexample>
 
-        <para>The first two profiles, <emphasis>spring-2.5</emphasis> and <emphasis>spring-3</emphasis>
-            will select either one of Spring 2.5 and Spring 3 for building the application. This decision has
-        implications on the versions of other modules used in the application, as follows:
-        </para>
+      <para>The first two profiles, <emphasis>spring-2.5</emphasis> and
+      <emphasis>spring-3</emphasis> will select either one of Spring 2.5 and
+      Spring 3 for building the application. This decision has implications on
+      the versions of other modules used in the application, as
+      follows:</para>
 
-        <itemizedlist>
-            <listitem> Spring 2.5 applications will use Spring Webflow 2.0.x and Spring Security 2.0.x;</listitem>
-            <listitem> Spring 3 applications will use Spring Webflow 2.2.x and Spring Security 3.0.x.</listitem>
-        </itemizedlist>
+      <itemizedlist>
+        <listitem>
+           Spring 2.5 applications will use Spring Webflow 2.0.x and Spring Security 2.0.x;
+        </listitem>
 
-        <para>The <emphasis>messaging</emphasis> profile will be used for enabling and disabling JMS integration, which
-        allows the application to run in JBoss AS profiles that do not provide JMS support such as the Web profile.</para>
+        <listitem>
+           Spring 3 applications will use Spring Webflow 2.2.x and Spring Security 3.0.x.
+        </listitem>
+      </itemizedlist>
 
-        <para>The application can be built using the following pattern:</para>
+      <para>The <emphasis>messaging</emphasis> profile will be used for
+      enabling and disabling JMS integration, which allows the application to
+      run in JBoss AS profiles that do not provide JMS support such as the Web
+      profile.</para>
 
-        <para>Depending upon the set of profiles provided at build time the outcome is as follows:</para>
+      <para>The application can be built using the following pattern:</para>
 
-        <table>
+      <para>Depending upon the set of profiles provided at build time the
+      outcome is as follows:</para>
+
+      <table>
         <title>Profiles and resulting application setup</title>
 
-        <tgroup cols="2">
+        <tgroup cols="3">
           <thead>
             <row>
               <entry align="center">Profiles</entry>
@@ -200,7 +204,6 @@
               <entry align="center">Spring Version</entry>
 
               <entry align="center">JMS integration</entry>
-
             </row>
           </thead>
 
@@ -211,45 +214,39 @@
               <entry>2.5</entry>
 
               <entry>Yes</entry>
-
             </row>
 
-              <row>
-                <entry>-Pspring-2.5</entry>
+            <row>
+              <entry>-Pspring-2.5</entry>
 
-                <entry>2.5</entry>
+              <entry>2.5</entry>
 
-                <entry>No</entry>
+              <entry>No</entry>
+            </row>
 
-              </row>
+            <row>
+              <entry>-Pspring-2.5,messaging</entry>
 
-              <row>
-                <entry>-Pspring-2.5,messaging</entry>
+              <entry>2.5</entry>
 
-                <entry>2.5</entry>
+              <entry>Yes</entry>
+            </row>
 
-                <entry>Yes</entry>
+            <row>
+              <entry>-Pspring-3</entry>
 
-              </row>
+              <entry>3</entry>
 
-              <row>
-                <entry>-Pspring-3</entry>
+              <entry>No</entry>
+            </row>
 
-                <entry>3</entry>
+            <row>
+              <entry>-Pspring-3,messaging</entry>
 
-                <entry>No</entry>
+              <entry>3</entry>
 
-              </row>
-
-              <row>
-                <entry>-Pspring-3,messaging</entry>
-
-                <entry>3</entry>
-
-                <entry>Yes</entry>
-
-              </row>
-
+              <entry>Yes</entry>
+            </row>
           </tbody>
         </tgroup>
       </table>
@@ -323,7 +320,7 @@ mvn -Pdb-setup</programlisting>
       <title>Deploying the application</title>
 
       <para>Copy one of the two ears produced by the build to the deploy
-      folder of JBoss AS.ou </para>
+      folder of JBoss AS.ou</para>
 
       <para>The deployment folder is: JBOSS_HOME/server/default/deploy, and
       the two (alternative) build files are:</para>
@@ -375,7 +372,6 @@ mvn -Pdb-setup</programlisting>
       changes to it), but this should always happen while the database is
       started).</para>
     </simplesect>
-
   </section>
 
   <section>
@@ -395,5 +391,135 @@ mvn -Pdb-setup</programlisting>
       <para>Alternately, you can install the m2eclipse Maven Eclipse plugin,
       and use it to import the application.</para>
     </informalexample>
+
+    <simplesect>
+      <title>Importing the project in JBDS</title>
+
+      <para>Sportsclub is a Maven-based project, so you can import it into
+      JBDS if you have the m2eclipse Maven integration plugin installed,
+      including the m2eclipse WTP extension. Installation can be found at
+      <uri>http://m2eclipse.sonatype.org/installing-m2eclipse.html</uri>.</para>
+
+      <para>For importing the project, go to
+      'Import...'-&gt;'Maven'-&gt;'Existing Maven Projects' and select the top
+      directory of the Sportsclub example (sportsclub). You will be shown the
+      top-level pom as well as the module subpoms.</para>
+
+      <para>At this point, it is important to choose which profiles do you
+      want to use in your application (spring-3, spring-2.5, messaging). You
+      will need to do so before you complete the import process, otherwise
+      your selection will contain the default set of profiles (spring-2.5,
+      messaging). You can change the profiles later from the contextual menu
+      of the project (Right click-Maven followed by a dependency update), but
+      you will need to do so for every project in your workspace.</para>
+
+      <para>Because there are slight differences between the context
+      definitions that apply in various configurations (spring-3, spring-2.5)
+      and also because some definitions may or may not be included (as there
+      is the case with the messaging profile), the poms of several modules
+      include alternative locations for web resources, that are added by Maven
+      at build time. Unfortunately, the m2eclipse plugin does not include
+      these locations and they have to be added manually to the
+      project.</para>
+
+      <para>You can add web resources to a project by opening its properties
+      and selecting the "Deployment Assembly" option, followed pressing the
+      "Add..." button and selecting the "Folder" option. The contents of the
+      selected folder will be added automatically in the document root of the
+      application.</para>
+
+      <para>Depending on the selected profiles you need to add additional
+      directories as shown in the following table:</para>
+
+      <table>
+        <title>Additional resource folders per module and profile</title>
+
+        <tgroup cols="3">
+          <thead>
+            <row>
+              <entry>Module</entry>
+
+              <entry>Enabled profile</entry>
+
+              <entry>Additional folder</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>sportsclub-invoicing-mvc</entry>
+
+              <entrytbl cols="1">
+                <tbody>
+                  <row>
+                    <entry>spring-2.5</entry>
+                  </row>
+
+                  <row>
+                    <entry>spring-3</entry>
+                  </row>
+
+                  <row>
+                    <entry>messaging</entry>
+                  </row>
+                </tbody>
+              </entrytbl>
+
+              <entrytbl cols="1">
+                <tbody>
+                  <row>
+                    <entry>src/main/webapp-security-2</entry>
+                  </row>
+
+                  <row>
+                    <entry>src/main/webapp-security-3</entry>
+                  </row>
+
+                  <row>
+                    <entry>src/main/webapp-messaging</entry>
+                  </row>
+                </tbody>
+              </entrytbl>
+            </row>
+
+            <row>
+              <entry>sportsclub-reservation-webflow</entry>
+
+              <entrytbl cols="1">
+                <tbody>
+                  <row>
+                    <entry>spring-2.5</entry>
+                  </row>
+
+                  <row>
+                    <entry>spring-3</entry>
+                  </row>
+                </tbody>
+              </entrytbl>
+
+              <entrytbl cols="1">
+                <tbody>
+                  <row>
+                    <entry>src/main/webapp-webflow-2.0</entry>
+                  </row>
+
+                  <row>
+                    <entry>src/main/webapp-webflow-2.0</entry>
+                  </row>
+                </tbody>
+              </entrytbl>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>Please note that you need to add additional resources even if you
+      don't indicate any additional profiles explicitly, since the application
+      will enable the spring-2.5 and messaging profiles by default.</para>
+
+      <para>Now you can run the application. On the 'Servers' view choose a
+      JBoss EAP 5 server, add one of the two EAR projects: sportsclub-ear or
+      sportsclub-jpa-ear and start the project.</para>
+    </simplesect>
   </section>
 </chapter>
