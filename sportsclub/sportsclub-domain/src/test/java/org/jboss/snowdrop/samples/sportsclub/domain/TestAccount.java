@@ -118,7 +118,7 @@ public class TestAccount
    }
 
    @Test
-   public void testWeekly()
+   public void testWeekly() throws ParseException
    {
       Account account = createAccount(BillingType.WEEKLY, BigDecimal.valueOf(520l));
 
@@ -129,11 +129,11 @@ public class TestAccount
    }
 
    @Test
-   public void testBiweekly()
+   public void testBiweekly() throws ParseException
    {
       Account account = createAccount(BillingType.BIWEEKLY, BigDecimal.valueOf(260l));
 
-      Date currentDate = new Date();
+      Date currentDate = formatter.parse("04-04-2011 01:22 EST");
       final TimeInterval timeInterval = account.getBillingPeriodFor(currentDate);
       Assert.assertTrue(timeInterval.contains(currentDate));
    }
@@ -161,12 +161,12 @@ public class TestAccount
    }
 
 
-   private Account createAccount(BillingType billingType, BigDecimal amount)
+   private Account createAccount(BillingType billingType, BigDecimal amount) throws ParseException
    {
       Account account = new Account();
       account.setBillingType(billingType);
       account.setClosed(false);
-      account.setCreationDate(new Date());
+      account.setCreationDate(formatter.parse("25-03-2011 6:25 CET"));
       Membership membership = new Membership("GOLD");
       membership.setActive(true);
       membership.setAnnualFee(amount);

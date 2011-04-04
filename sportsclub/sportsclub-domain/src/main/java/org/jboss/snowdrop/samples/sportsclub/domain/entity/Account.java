@@ -99,7 +99,7 @@ public class Account implements Serializable
          case MONTHLY:
             calendar.set(Calendar.DAY_OF_MONTH, 1);
             timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
-            calendar.add(Calendar.MONTH, 1);
+            calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
             timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
             break;
          case WEEKLY:
@@ -109,10 +109,10 @@ public class Account implements Serializable
             timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
             break;
          case BIWEEKLY:
-            long duration = normalizedDate.getTime() - getCreationDate().getTime();
-            long intervals = duration / TimeInterval.TWO_WEEKS;
             calendar.setTime(getCreationDate());
             calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
+            long duration = normalizedDate.getTime() - calendar.getTime().getTime();
+            long intervals = duration / TimeInterval.TWO_WEEKS;
             calendar.add(Calendar.DAY_OF_MONTH, (int)intervals * 14);
             timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
             calendar.add(Calendar.DAY_OF_MONTH, 13);
