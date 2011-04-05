@@ -13,7 +13,7 @@
     <properties>
         <commons-logging.version>1.1.1</commons-logging.version>
         <richfaces.version>3.3.1.GA</richfaces.version>
-        <snowdrop.version>1.2.0.CR1</snowdrop.version>
+        <snowdrop.version>1.2.0.Final</snowdrop.version>
         <jboss-ejb-api.version>3.0.0.GA</jboss-ejb-api.version>
         <jboss-ejb3-ext-api.version>1.0.0</jboss-ejb3-ext-api.version>
         <ejb3-persistence.version>1.0.2.GA</ejb3-persistence.version>

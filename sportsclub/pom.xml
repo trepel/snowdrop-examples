@@ -33,13 +33,6 @@
 
     <packaging>pom</packaging>
 
-
-    <properties>
-        <commons-logging.version>${jms.version}.1</commons-logging.version>
-        <richfaces.version>3.3.1.GA</richfaces.version>
-        <snowdrop.version>1.2.0.CR1</snowdrop.version>
-    </properties>
-
     <scm>
         <connection>scm:git:git@github.com:snowdrop/snowdrop-examples.git</connection>
         <developerConnection>scm:git:git@github.com:snowdrop/snowdrop-examples.git</developerConnection>

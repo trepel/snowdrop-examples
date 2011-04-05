@@ -24,7 +24,7 @@
         <property name="messageFactory">
             <bean class="com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl"/>
         </property>
-</bean>
+    </bean>
 
     <bean class="org.springframework.ws.server.endpoint.mapping.PayloadRootAnnotationMethodEndpointMapping"/>
 </beans>
