@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss.snowdrop.samples.sportsclub</groupId>
     <artifactId>sportsclub-parent</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.0.Final</version>
     <name>Sports Club Parent</name>
 
     <parent>
         <artifactId>sportsclub-bom</artifactId>
         <groupId>org.jboss.snowdrop.samples.sportsclub</groupId>
-        <version>1.2.0-SNAPSHOT</version>
+        <version>1.2.0.Final</version>
         <relativePath>sportsclub-bom/pom.xml</relativePath>
     </parent>
 
