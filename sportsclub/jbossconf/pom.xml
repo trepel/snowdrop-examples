@@ -6,7 +6,7 @@
 
     <groupId>org.jboss.snowdrop.samples.sportsclub</groupId>
     <artifactId>database</artifactId>
-    <version>1.2.0.Final</version>
+    <version>1.2.1-SNAPSHOT</version>
     <name>Sportsclub: JBoss AS Setup</name>
 
     <packaging>pom</packaging>
