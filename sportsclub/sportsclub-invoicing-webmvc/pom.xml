@@ -191,7 +191,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <outputDirectory>target/${build.finalName}</outputDirectory>
+                                    <outputDirectory>target/${project.build.finalName}</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>src/main/webapp-security-2</directory>
@@ -240,7 +240,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <outputDirectory>target/${build.finalName}</outputDirectory>
+                                    <outputDirectory>target/${project.build.finalName}</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>src/main/webapp-security-3</directory>
@@ -273,7 +273,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <outputDirectory>target/${build.finalName}</outputDirectory>
+                                    <outputDirectory>target/${project.build.finalName}</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>src/main/webapp-messaging</directory>
