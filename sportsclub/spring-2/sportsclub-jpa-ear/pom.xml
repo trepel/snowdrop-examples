@@ -197,7 +197,6 @@
                 <configuration>
                     <displayName>Sports Club Sample Application</displayName>
                     <generateApplicationXml>true</generateApplicationXml>
-                    <earSourceExcludes>**/application.xml</earSourceExcludes>
                     <defaultLibBundleDir>/lib/</defaultLibBundleDir>
                     <workDirectory>${project.build.directory}/${project.build.finalName}-exploded.ear</workDirectory>
                     <modules>
