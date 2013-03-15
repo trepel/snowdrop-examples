@@ -413,7 +413,6 @@
 				<dependency>
 					<groupId>org.jboss.snowdrop</groupId>
 					<artifactId>snowdrop-namespace</artifactId>
-					<scope>provided</scope>
 					<exclusions>
 						<exclusion>
 							<groupId>org.springframework</groupId>
