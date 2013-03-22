@@ -52,7 +52,7 @@
             </dependency>
 
             <dependency>
-                <groupId>org.jboss.snowdrop.samples.sportsclub.spring-3_1</groupId>
+                <groupId>org.jboss.snowdrop.samples.sportsclub.spring-3_2</groupId>
                 <artifactId>sportsclub-bom</artifactId>
                 <version>${project.version}</version>
                 <scope>import</scope>
