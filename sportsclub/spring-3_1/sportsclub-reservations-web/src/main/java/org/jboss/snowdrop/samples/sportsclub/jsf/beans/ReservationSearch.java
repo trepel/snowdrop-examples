@@ -199,6 +199,13 @@ public class ReservationSearch extends AbstractExtendedDataModelHelper<Reservati
       this.accountFilter = accountFilter;
    }
 
+   public void refreshCount() 
+   {
+      resetCurrentRowCount();
+      getRowCount();
+      setCurrentPage(1);
+   }
+
    public EquipmentFilter getEquipmentFilter()
    {
       return equipmentFilter;
