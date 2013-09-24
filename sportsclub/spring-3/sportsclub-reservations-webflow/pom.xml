@@ -61,6 +61,7 @@
             <artifactId>spring-context</artifactId>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
@@ -82,6 +83,7 @@
         <dependency>
             <groupId>org.richfaces.core</groupId>
             <artifactId>richfaces-core-api</artifactId>
+            <version>4.3.3.Final</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -93,6 +95,7 @@
         <dependency>
             <groupId>org.richfaces.core</groupId>
             <artifactId>richfaces-core-impl</artifactId>
+            <version>4.3.3.Final</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -104,6 +107,7 @@
         <dependency>
             <groupId>org.richfaces.ui</groupId>
             <artifactId>richfaces-components-api</artifactId>
+            <version>4.3.3.Final</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -115,6 +119,7 @@
         <dependency>
             <groupId>org.richfaces.ui</groupId>
             <artifactId>richfaces-components-ui</artifactId>
+            <version>4.3.3.Final</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>

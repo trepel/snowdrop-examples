@@ -22,6 +22,7 @@
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
@@ -39,11 +40,13 @@
             <artifactId>hibernate-annotations</artifactId>
             <scope>provided</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
             <artifactId>jboss-ejb-api_3.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.jboss.spec.javax.interceptor</groupId>
             <artifactId>jboss-interceptors-api_1.1_spec</artifactId>
@@ -52,7 +55,7 @@
 
         <dependency>
             <groupId>org.jboss.snowdrop</groupId>
-            <artifactId>snowdrop-deployers</artifactId>
+            <artifactId>snowdrop-interceptors</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

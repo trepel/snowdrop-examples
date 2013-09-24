@@ -17,7 +17,6 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -56,13 +55,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -425,10 +422,46 @@
 					<groupId>org.jboss.snowdrop</groupId>
 					<artifactId>snowdrop-namespace</artifactId>
 					<exclusions>
-						<exclusion>
-							<groupId>org.springframework</groupId>
-							<artifactId>spring-beans</artifactId>
-						</exclusion>
+		                <exclusion> 
+		                    <groupId>org.springframework.ws</groupId> 
+		                    <artifactId>spring-oxm</artifactId> 
+		                </exclusion> 
+		                <exclusion> 
+		                    <groupId>org.springframework</groupId> 
+		                    <artifactId>spring-aop</artifactId> 
+		                </exclusion> 
+		                <exclusion> 
+		                    <groupId>org.springframework</groupId> 
+		                    <artifactId>spring-asm</artifactId> 
+		                </exclusion> 
+		                <exclusion> 
+		                    <groupId>org.springframework</groupId> 
+		                    <artifactId>spring-expression</artifactId> 
+		                </exclusion> 
+		                <exclusion> 
+		                    <groupId>org.springframework</groupId> 
+		                    <artifactId>spring-beans</artifactId> 
+		                </exclusion> 
+		                <exclusion> 
+		                    <groupId>org.springframework</groupId> 
+		                    <artifactId>spring-core</artifactId> 
+		                </exclusion> 
+		                <exclusion> 
+		                    <groupId>org.springframework</groupId> 
+		                    <artifactId>spring-context</artifactId> 
+		                </exclusion> 
+		                <exclusion> 
+		                    <groupId>org.springframework</groupId> 
+		                    <artifactId>spring-context-support</artifactId> 
+		                </exclusion> 
+		                <exclusion> 
+		                    <groupId>commons-logging</groupId> 
+		                    <artifactId>commons-logging</artifactId> 
+		                </exclusion> 
+		                <exclusion> 
+		                    <groupId>aopalliance</groupId> 
+		                    <artifactId>aopalliance</artifactId> 
+		                </exclusion> 
 					</exclusions>
 				</dependency>
 			</dependencies>
@@ -459,7 +492,6 @@
 				</plugins>
 
 			</build>
-
 		</profile>
 	</profiles>
 </project>
