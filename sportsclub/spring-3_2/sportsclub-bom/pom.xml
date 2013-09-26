@@ -19,7 +19,7 @@
 		<javassist.version>3.11.0.GA</javassist.version>
 		<junit.version>4.8.2</junit.version>
 		<spring.version>3.2.2.RELEASE</spring.version>
-		<snowdrop.version>2.0.5.Final</snowdrop.version>
+		<snowdrop.version>3.0.1.Final</snowdrop.version>
 		<spring-security.version>3.1.3.RELEASE</spring-security.version>
 		<spring-webflow.version>2.3.1.RELEASE</spring-webflow.version>
 		<spring-ws.version>2.1.2.RELEASE</spring-ws.version>
@@ -261,7 +261,7 @@
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.snowdrop</groupId>
-				<artifactId>snowdrop-deployers</artifactId>
+				<artifactId>snowdrop-interceptors</artifactId>
 				<version>${snowdrop.version}</version>
 			</dependency>
 			<dependency>
@@ -275,7 +275,7 @@
 			<dependency>
 				<groupId>org.richfaces</groupId>
 				<artifactId>richfaces-bom</artifactId>
-				<version>4.2.2.Final</version>
+				<version>4.3.3.Final</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
