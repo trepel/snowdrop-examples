@@ -67,7 +67,6 @@
             <scope>provided</scope>
         </dependency>
 
-
         <dependency>
             <groupId>org.jboss.spec.javax.faces</groupId>
             <artifactId>jboss-jsf-api_2.1_spec</artifactId>
@@ -84,6 +83,7 @@
         <dependency>
              <groupId>org.richfaces.core</groupId>
              <artifactId>richfaces-core-api</artifactId>
+            <version>4.3.3.Final</version>
              <exclusions>
                  <exclusion>
                      <groupId>commons-logging</groupId>
@@ -95,6 +95,7 @@
          <dependency>
              <groupId>org.richfaces.core</groupId>
              <artifactId>richfaces-core-impl</artifactId>
+            <version>4.3.3.Final</version>
              <exclusions>
                  <exclusion>
                      <groupId>commons-logging</groupId>
@@ -106,6 +107,7 @@
          <dependency>
              <groupId>org.richfaces.ui</groupId>
              <artifactId>richfaces-components-api</artifactId>
+            <version>4.3.3.Final</version>
              <exclusions>
                  <exclusion>
                      <groupId>commons-logging</groupId>
@@ -117,6 +119,7 @@
          <dependency>
              <groupId>org.richfaces.ui</groupId>
              <artifactId>richfaces-components-ui</artifactId>
+            <version>4.3.3.Final</version>
              <exclusions>
                  <exclusion>
                      <groupId>commons-logging</groupId>

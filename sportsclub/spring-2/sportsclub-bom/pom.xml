@@ -26,7 +26,7 @@
         <spring-dao.version>2.0.8</spring-dao.version>
         <spring-webflow.version>2.0.9.RELEASE</spring-webflow.version>
         <spring-ws.version>1.5.10</spring-ws.version>
-        <snowdrop.version>2.0.3.Final</snowdrop.version>
+        <snowdrop.version>3.0.2.Final</snowdrop.version>
         <aspectj.version>1.6.1</aspectj.version>
         <aopalliance.version>1.0</aopalliance.version>
     </properties>
@@ -145,7 +145,7 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.snowdrop</groupId>
-                <artifactId>snowdrop-deployers</artifactId>
+                <artifactId>snowdrop-intercetors</artifactId>
                 <version>${snowdrop.version}</version>
             </dependency>
             <dependency>
