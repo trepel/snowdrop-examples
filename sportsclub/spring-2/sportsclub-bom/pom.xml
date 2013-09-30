@@ -145,7 +145,7 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.snowdrop</groupId>
-                <artifactId>snowdrop-intercetors</artifactId>
+                <artifactId>snowdrop-interceptors</artifactId>
                 <version>${snowdrop.version}</version>
             </dependency>
             <dependency>
