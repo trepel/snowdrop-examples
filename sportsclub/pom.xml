@@ -20,6 +20,7 @@
     	<module>spring-3</module>
     	<module>spring-3_1</module>
     	<module>spring-3_2</module>
+    	<module>spring-4_0</module>
     </modules>
 
     <packaging>pom</packaging>
