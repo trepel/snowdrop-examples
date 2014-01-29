@@ -24,19 +24,17 @@ Please refer to the Snowdrop documentation for details.
 For building & running the application:
 --------------------------------------  
 
-1. **Execute a Maven build from the root folder of the example**
+**1) Execute a Maven build from the root folder of the example**
 
         mvn clean package
 
- - JMS integration can be included in the build or not through the messaging profile. 
-
- - Running the application on platforms which do not contain the messaging component (such as the web profile) requires 
+JMS integration can be included in the build or not through the messaging profile. Running the application on platforms which do not contain the messaging component (such as the web profile) requires 
 disabling the messaging profile as follows: 
 
-            mvn clean package "-P!messaging" 
+        mvn clean package "-P!messaging" 
 
 
-2. **Configure JBoss AS**
+**2) Configure JBoss AS**
 
    a. Add the JMS destination definition in the messaging subsystem
 
@@ -73,7 +71,7 @@ disabling the messaging profile as follows:
             </subsystem>
 
 
-3. **Deploy the application**
+**3) Deploy the application**
 
   a. Copy one of the two ears produced by the build to the deploy folder of JBoss AS.
 
@@ -86,9 +84,9 @@ disabling the messaging profile as follows:
      - `sportsclub-jpa-ear/target/sportsclub.ear` (JPA-based implementation, using Hibernate as the underlying provider)
 
 
-4. **Start JBoss AS**
+**4) Start JBoss AS**
 
-5. **Point the browser at one of:**
+**5) Point the browser at one of:**
 
    - [http://localhost:8080/sportsclub/invoicing](http://localhost:8080/sportsclub/invoicing) [1]
    - [http://localhost:8080/sportsclub/reservations](http://localhost:8080/sportsclub/reservations)
