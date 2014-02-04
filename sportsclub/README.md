@@ -28,8 +28,9 @@ For building & running the application:
 
         mvn clean package
 
-JMS integration can be included in the build or not through the messaging profile. Running the application on platforms which do not contain the messaging component (such as the web profile) requires 
-disabling the messaging profile as follows: 
+JMS integration can be included in the build or not through the messaging profile. Running the application on platforms 
+which do not contain the messaging component (such as AS7 with default standalone.xml configuration) requires disabling 
+the messaging profile as follows: 
 
         mvn clean package "-P!messaging" 
 
@@ -38,7 +39,7 @@ disabling the messaging profile as follows:
 
    a. Add the JMS destination definition in the messaging subsystem
 
-            <subsystem xmlns="urn:jboss:domain:messaging:1.1">
+            <subsystem xmlns="urn:jboss:domain:messaging:1.4">
                 ...
                 <hornetq-server>
                     ...
@@ -54,7 +55,7 @@ disabling the messaging profile as follows:
 
    b. Add a security domain in the security subsystem
 
-            <subsystem xmlns="urn:jboss:domain:security:1.1">
+            <subsystem xmlns="urn:jboss:domain:security:1.2">
                 <security-domains>
                     ...
                     <!-- Include the following definition -->
