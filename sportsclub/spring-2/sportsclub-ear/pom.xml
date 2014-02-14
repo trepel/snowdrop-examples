@@ -228,15 +228,15 @@
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <configuration>
-			      <filesets>
-			        <fileset>
-			          <directory>src/main/application/META-INF</directory>
-			          <includes>
-			            <include>**/application.xml</include>
-			          </includes>
-			        </fileset>
-			      </filesets>
-			    </configuration>
+                  <filesets>
+                    <fileset>
+                      <directory>src/main/application/META-INF</directory>
+                      <includes>
+                        <include>**/application.xml</include>
+                      </includes>
+                    </fileset>
+                  </filesets>
+                </configuration>
             </plugin>
 
         </plugins>

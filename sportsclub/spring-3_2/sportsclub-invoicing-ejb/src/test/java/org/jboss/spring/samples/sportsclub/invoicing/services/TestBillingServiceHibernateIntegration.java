@@ -40,7 +40,7 @@ public class TestBillingServiceHibernateIntegration
    public void testBillingService()
    {
 
-	final Invoice invoice = (Invoice)new TransactionTemplate(transactionManager).execute(new TransactionCallback()
+    final Invoice invoice = (Invoice)new TransactionTemplate(transactionManager).execute(new TransactionCallback()
       {
          public Object doInTransaction(TransactionStatus status)
          {

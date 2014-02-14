@@ -16,9 +16,9 @@
     <jee:jndi-lookup id="entityManagerFactory" jndi-name="java:/jboss/sportsclub/emf" lookup-on-startup="false" 
                      expected-type="javax.persistence.EntityManagerFactory"/>
 
-	<bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
-		<property name="entityManagerFactory" ref="entityManagerFactory"/>
-	</bean>
+    <bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
     
     <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
         <property name="transactionManagerName" value="java:jboss/TransactionManager"/>

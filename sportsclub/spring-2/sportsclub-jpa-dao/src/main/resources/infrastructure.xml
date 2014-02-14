@@ -14,11 +14,11 @@
        http://www.springframework.org/schema/tx/spring-tx.xsd" default-lazy-init="true">
 
     <jee:jndi-lookup id="entityManagerFactory" jndi-name="java:/jboss/sportsclub/emf" 
-    				 expected-type="javax.persistence.EntityManagerFactory" lookup-on-startup="false"/>
+                     expected-type="javax.persistence.EntityManagerFactory" lookup-on-startup="false"/>
 
-	<bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
-		<property name="entityManagerFactory" ref="entityManagerFactory"/>
-	</bean>
+    <bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
     
     <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
         <property name="transactionManagerName" value="java:jboss/TransactionManager"/>

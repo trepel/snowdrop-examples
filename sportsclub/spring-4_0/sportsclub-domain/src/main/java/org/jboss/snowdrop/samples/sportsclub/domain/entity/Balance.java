@@ -9,7 +9,11 @@ import javax.persistence.Embeddable;
 public class Balance implements Serializable
 {
 
-   private BigDecimal amount;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7440283939163691421L;
+private BigDecimal amount;
 
    public BigDecimal getAmount()
    {

@@ -6,7 +6,12 @@ import java.math.BigDecimal;
 public class PaymentNotification implements Serializable
 {
 
-   Long accountNumber;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8852636037793111702L;
+
+Long accountNumber;
 
    BigDecimal amount;
 

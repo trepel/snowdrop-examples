@@ -25,7 +25,12 @@ import org.jboss.snowdrop.samples.sportsclub.utils.DateUtils;
 @Entity
 public class Account implements Serializable
 {
-   @Id
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7356658611976839518L;
+
+@Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
 

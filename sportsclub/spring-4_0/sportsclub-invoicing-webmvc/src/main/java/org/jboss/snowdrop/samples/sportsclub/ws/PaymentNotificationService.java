@@ -31,7 +31,7 @@ public class PaymentNotificationService
    @PostConstruct
    public void doAfterInitialization() 
    {
-	   SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+       SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
    }
   
 }

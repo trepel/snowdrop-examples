@@ -23,7 +23,12 @@ import java.io.IOException;
  */
 public class EquipmentFilter extends AbstractExtendedDataModelHelper implements Serializable
 {
-   @Autowired
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2449681423406089713L;
+
+@Autowired
    private transient EquipmentService equipmentService;
 
    private Reservation reservation;

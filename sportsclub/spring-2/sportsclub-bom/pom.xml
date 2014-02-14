@@ -34,13 +34,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-				<groupId>org.jboss.bom</groupId>
-				<artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
-				<version>1.0.0.Final</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			
+                <groupId>org.jboss.bom</groupId>
+                <artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
+                <version>1.0.0.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            
              <dependency>
                 <groupId>aopalliance</groupId>
                 <artifactId>aopalliance</artifactId>

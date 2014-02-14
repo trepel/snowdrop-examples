@@ -13,7 +13,12 @@ import javax.persistence.Id;
 public class Membership implements Serializable
 {
 
-   @Id
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8828914530495807258L;
+
+@Id
    private String code;
 
    private BigDecimal annualFee;

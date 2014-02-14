@@ -20,7 +20,12 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class AccountFilter extends AbstractExtendedDataModelHelper implements Serializable
 {
-   @Autowired
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -269525937840159759L;
+
+@Autowired
    private transient AccountService accountService;
 
    private Account selectedAccount;

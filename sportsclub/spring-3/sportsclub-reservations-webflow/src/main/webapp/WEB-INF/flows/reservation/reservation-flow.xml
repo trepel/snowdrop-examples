@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
 
     <var name="equipmentFilterCreate" class="org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans.EquipmentFilter"/>
@@ -19,13 +19,13 @@
     </on-start>
 
     <view-state id="selectAccount">
-		<transition on="next" to="chooseDateAndEquipment"/>
-	</view-state>
+        <transition on="next" to="chooseDateAndEquipment"/>
+    </view-state>
 
-	<view-state id="chooseDateAndEquipment">
-		<transition on="next" to="confirmReservation"/>
+    <view-state id="chooseDateAndEquipment">
+        <transition on="next" to="confirmReservation"/>
         <transition on="previous" to="selectAccount"/>
-	</view-state>
+    </view-state>
 
     <view-state id="confirmReservation">
        <transition on="next" to="reservationConfirmed">
@@ -38,6 +38,6 @@
        <transition on="*" to="finishReservation"/>
     </view-state>
 
-	<end-state id="finishReservation"/>
+    <end-state id="finishReservation"/>
 
 </flow>

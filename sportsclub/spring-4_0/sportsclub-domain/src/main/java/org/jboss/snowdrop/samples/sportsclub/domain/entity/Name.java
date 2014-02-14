@@ -12,7 +12,12 @@ import javax.persistence.Embeddable;
 public class Name implements Serializable
 {
 
-   @Basic
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2471594116346509511L;
+
+@Basic
    private String firstName;
 
    @Basic

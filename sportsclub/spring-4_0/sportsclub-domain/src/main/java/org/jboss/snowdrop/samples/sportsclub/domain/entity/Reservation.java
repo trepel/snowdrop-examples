@@ -18,7 +18,12 @@ import javax.persistence.ManyToOne;
 public class Reservation implements Serializable
 {
 
-   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4731610731461680181L;
+
+@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
    @Column(name = "fromDT", nullable = false)
