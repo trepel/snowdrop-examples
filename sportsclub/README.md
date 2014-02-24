@@ -39,37 +39,37 @@ the messaging profile as follows:
 
    a. Add the JMS destination definition in the messaging subsystem
 
-            <subsystem xmlns="urn:jboss:domain:messaging:1.4">
+        <subsystem xmlns="urn:jboss:domain:messaging:1.4">
+            ...
+            <hornetq-server>
                 ...
-                <hornetq-server>
+                <jms-destinations>
                     ...
-                    <jms-destinations>
-                        ...
-                        <!-- Include the following definition -->
-                        <jms-queue name="sportsclub">
-                            <entry name="queue/sportsclub"/>
-                        </jms-queue>
-                    </jms-destinations>
-                </hornetq-server>
-            </subsystem>
+                    <!-- Include the following definition -->
+                    <jms-queue name="sportsclub">
+                        <entry name="queue/sportsclub"/>
+                    </jms-queue>
+                </jms-destinations>
+            </hornetq-server>
+        </subsystem>
 
    b. Add a security domain in the security subsystem
 
-            <subsystem xmlns="urn:jboss:domain:security:1.2">
-                <security-domains>
-                    ...
-                    <!-- Include the following definition -->
-                    <security-domain name="employees">
-                        <authentication>
-                            <login-module code="Database" flag="required">
-                                <module-option name="dsJndiName" value="java:jboss/datasources/ExampleDS"/>
-                                <module-option name="principalsQuery" value="select passwd from SPORTSCLUB_USERS where username=?"/>
-                                <module-option name="rolesQuery" value="select userRoles,'Roles' from SPORTSCLUB_ROLES where username=?"/>
-                            </login-module>
-                        </authentication>
-                    </security-domain>
-                </security-domains>
-            </subsystem>
+        <subsystem xmlns="urn:jboss:domain:security:1.2">
+            <security-domains>
+                ...
+                <!-- Include the following definition -->
+                <security-domain name="employees">
+                    <authentication>
+                        <login-module code="Database" flag="required">
+                            <module-option name="dsJndiName" value="java:jboss/datasources/ExampleDS"/>
+                            <module-option name="principalsQuery" value="select passwd from SPORTSCLUB_USERS where username=?"/>
+                            <module-option name="rolesQuery" value="select userRoles,'Roles' from SPORTSCLUB_ROLES where username=?"/>
+                        </login-module>
+                    </authentication>
+                </security-domain>
+            </security-domains>
+        </subsystem>
 
 
 **3) Deploy the application**
