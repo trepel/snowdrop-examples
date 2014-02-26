@@ -21,7 +21,7 @@
         <junit.version>4.8.2</junit.version>
         <spring.version>4.0.2.RELEASE</spring.version>
         <snowdrop.version>3.1.1-SNAPSHOT</snowdrop.version>
-        <spring-security.version>3.2.0.RELEASE</spring-security.version>
+        <spring-security.version>3.2.1.RELEASE</spring-security.version>
         <spring-webflow.version>2.3.3.RELEASE</spring-webflow.version>
         <spring-ws.version>2.1.4.RELEASE</spring-ws.version>
         <aspectj.version>1.7.4</aspectj.version>
