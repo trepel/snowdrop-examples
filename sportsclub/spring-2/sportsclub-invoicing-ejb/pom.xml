@@ -5,7 +5,7 @@
     <parent>
         <artifactId>sportsclub-parent</artifactId>
         <groupId>org.jboss.snowdrop.samples.sportsclub.spring-2</groupId>
-        <version>3.1.1-SNAPSHOT</version>
+        <version>3.1.1.Final</version>
     </parent>
     
     <modelVersion>4.0.0</modelVersion>
