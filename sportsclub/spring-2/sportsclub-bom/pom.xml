@@ -6,7 +6,7 @@
 
     <groupId>org.jboss.snowdrop.samples.sportsclub.spring-2</groupId>
     <artifactId>sportsclub-bom</artifactId>
-    <version>3.1.1.Final</version>
+    <version>3.1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
 
@@ -26,7 +26,7 @@
         <spring-dao.version>2.0.8</spring-dao.version>
         <spring-webflow.version>2.0.9.RELEASE</spring-webflow.version>
         <spring-ws.version>1.5.10</spring-ws.version>
-        <snowdrop.version>3.1.1.Final</snowdrop.version>
+        <snowdrop.version>3.1.2-SNAPSHOT</snowdrop.version>
         <aspectj.version>1.6.1</aspectj.version>
         <aopalliance.version>1.0</aopalliance.version>
     </properties>
