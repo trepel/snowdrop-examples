@@ -19,7 +19,7 @@ public class TimeInterval implements Serializable
 	 */
 	private static final long serialVersionUID = -8477277838740499216L;
 
-public static final TimeZone TIME_ZONE = TimeZone.getTimeZone("EST");
+   public static final TimeZone TIME_ZONE = TimeZone.getTimeZone("EST");
 
    public static final long TWO_WEEKS = (14 * 24 * 3600 * 1000);
    public static final long DAY = 24 * 3600 * 1000;

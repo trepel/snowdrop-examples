@@ -13,7 +13,8 @@ public class Balance implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 7440283939163691421L;
-private BigDecimal amount;
+   
+   private BigDecimal amount;
 
    public BigDecimal getAmount()
    {

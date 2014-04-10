@@ -25,7 +25,7 @@ public class AccountFilter extends AbstractExtendedDataModelHelper implements Se
 	 */
 	private static final long serialVersionUID = -269525937840159759L;
 
-@Autowired
+   @Autowired
    private transient AccountService accountService;
 
    private Account selectedAccount;

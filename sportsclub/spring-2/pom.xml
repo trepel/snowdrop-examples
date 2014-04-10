@@ -36,6 +36,7 @@
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>org.jboss.snowdrop.samples.sportsclub.spring-2</groupId>
                 <artifactId>sportsclub-domain</artifactId>
@@ -64,6 +65,7 @@
             </dependency>
 
         </dependencies>
+
     </dependencyManagement>
 
     <build>

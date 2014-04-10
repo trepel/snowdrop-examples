@@ -25,6 +25,8 @@ import org.jboss.snowdrop.samples.sportsclub.utils.DateUtils;
 @Entity
 public class Account implements Serializable
 {
+	private static final long serialVersionUID = -7356658611976839518L;
+
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
@@ -95,46 +97,46 @@ public class Account implements Serializable
       Calendar calendar = new GregorianCalendar(TimeInterval.TIME_ZONE);
       calendar.setTime(normalizedDate);
       TimeInterval timeInterval = new TimeInterval();
-       long duration;
-       long intervals;
-       switch (billingType)
-       {
-           case MONTHLY:
-               calendar.set(Calendar.DAY_OF_MONTH, 1);
-               timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
-               calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
-               timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
-               break;
-           case SEMIMONTHLY:
-               calendar.setTime(getCreationDate());
-               calendar.set(Calendar.DAY_OF_MONTH, 1);
-               duration = normalizedDate.getTime() - calendar.getTime().getTime();
-               int halfMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)/2;
-               intervals = duration / (halfMonth * 24 * 3600 * 1000);
-               calendar.set(Calendar.DAY_OF_MONTH, (int)intervals*halfMonth + 1);
-               timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
-               calendar.add(Calendar.DAY_OF_MONTH, halfMonth);
-               timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
-               break;
-           case WEEKLY:
-               calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
-               timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
-               calendar.add(Calendar.DAY_OF_MONTH, 6);
-               timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
-               break;
-           case BIWEEKLY:
-               calendar.setTime(getCreationDate());
-               calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
-               duration = normalizedDate.getTime() - calendar.getTime().getTime();
-               intervals = duration / TimeInterval.TWO_WEEKS;
-               calendar.add(Calendar.DAY_OF_MONTH, (int)intervals * 14);
-               timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
-               calendar.add(Calendar.DAY_OF_MONTH, 13);
-               timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
-               break;
-           default:
-               throw new IllegalArgumentException("Invalid BillingType value for account:" + billingType);
-       }
+      long duration;
+      long intervals;
+      switch (billingType)
+      {
+         case MONTHLY:
+            calendar.set(Calendar.DAY_OF_MONTH, 1);
+            timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
+            calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+            timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
+            break;
+         case SEMIMONTHLY:
+             calendar.setTime(getCreationDate());
+             calendar.set(Calendar.DAY_OF_MONTH, 1);
+             duration = normalizedDate.getTime() - calendar.getTime().getTime();
+             int halfMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)/2;
+             intervals = duration / (halfMonth * 24 * 3600 * 1000);
+             calendar.set(Calendar.DAY_OF_MONTH, (int)intervals*halfMonth + 1);
+             timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
+             calendar.add(Calendar.DAY_OF_MONTH, halfMonth);
+             timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
+            break;
+         case WEEKLY:
+            calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
+            timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
+            calendar.add(Calendar.DAY_OF_MONTH, 6);
+            timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
+            break;
+         case BIWEEKLY:
+            calendar.setTime(getCreationDate());
+            calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
+            duration = normalizedDate.getTime() - calendar.getTime().getTime();
+            intervals = duration / TimeInterval.TWO_WEEKS;
+            calendar.add(Calendar.DAY_OF_MONTH, (int)intervals * 14);
+            timeInterval.setStartDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
+            calendar.add(Calendar.DAY_OF_MONTH, 13);
+            timeInterval.setEndDate(DateUtils.normalizeDate(calendar.getTime(), TimeInterval.TIME_ZONE));
+            break;
+         default:
+            throw new IllegalArgumentException("Invalid BillingType value for account:" + billingType);
+     }
      return timeInterval;
    }
 

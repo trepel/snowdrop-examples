@@ -7,7 +7,6 @@
    </parent>
    <modelVersion>4.0.0</modelVersion>
 
-   <groupId>org.jboss.snowdrop.samples.sportsclub.spring-3</groupId>
    <artifactId>sportsclub-test-infrastructure</artifactId>
    <name>Sports Club Unit Test Infrastructure</name>
 
@@ -30,11 +29,11 @@
            <scope>test</scope>
        </dependency>
 
-      <dependency>
-         <groupId>com.h2database</groupId>
-         <artifactId>h2</artifactId>
-         <scope>test</scope>
-      </dependency>
+       <dependency>
+          <groupId>com.h2database</groupId>
+          <artifactId>h2</artifactId>
+          <scope>test</scope>
+       </dependency>
 
       <dependency>
          <groupId>junit</groupId>
@@ -54,11 +53,11 @@
          <scope>provided</scope>
       </dependency>
 
-      <dependency>
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-annotations</artifactId>
-         <scope>provided</scope>
-      </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
       <dependency>
          <groupId>org.hibernate.javax.persistence</groupId>

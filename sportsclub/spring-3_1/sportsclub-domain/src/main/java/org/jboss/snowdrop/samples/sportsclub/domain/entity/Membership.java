@@ -13,6 +13,8 @@ import javax.persistence.Id;
 public class Membership implements Serializable
 {
 
+	private static final long serialVersionUID = 8828914530495807258L;
+
    @Id
    private String code;
 

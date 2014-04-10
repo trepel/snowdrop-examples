@@ -359,6 +359,22 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Bring in the Servlet jars to avoid errors while compiling with jdt. -->
+        <dependency>
+            <groupId>org.jboss.spec.javax.servlet</groupId>
+            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.servlet.jsp</groupId>
+            <artifactId>jboss-jsp-api_2.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.servlet.jstl</groupId>
+            <artifactId>jboss-jstl-api_1.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.ws</groupId>
@@ -403,6 +419,7 @@
             </exclusions>
         </dependency>
     </dependencies>
+
     <profiles>
         <profile>
             <id>messaging</id>

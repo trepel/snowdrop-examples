@@ -30,7 +30,7 @@ public class Account implements Serializable
 	 */
 	private static final long serialVersionUID = -7356658611976839518L;
 
-@Id
+   @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
 

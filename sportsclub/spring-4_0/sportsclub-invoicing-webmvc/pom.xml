@@ -294,6 +294,7 @@
         <dependency>
             <groupId>org.jboss.snowdrop.samples.sportsclub.spring-4_0</groupId>
             <artifactId>sportsclub-domain</artifactId>
+            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -380,7 +381,7 @@
             </exclusions>
         </dependency>
     </dependencies>
-    
+
     <profiles>
         <profile>
             <id>messaging</id>

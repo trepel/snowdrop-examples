@@ -3,7 +3,6 @@ DROP TABLE SPORTSCLUB_ROLES IF EXISTS CASCADE;
 CREATE TABLE SPORTSCLUB_USERS(username VARCHAR(64) PRIMARY KEY, passwd VARCHAR(64));
 CREATE TABLE SPORTSCLUB_ROLES(username VARCHAR(64), userRoles VARCHAR(32));
 
-
 INSERT INTO PERSON VALUES(1,'Ankh Morpork','Ankh Morpork','A0A0A0','Ankh Morpork','1 King','Carrot','Ironfoundersson',NULL);
 INSERT INTO PERSON VALUES(2,'Ankh Morpork','Ankh Morpork','A0A0A0','Ankh Morpork','1 Central St.','Havelock','Vetinari',NULL);
 INSERT INTO PERSON VALUES(3,'Lancre','Ramtops','B0B0B0','Ramtops','1 King','Magrat','Garlick',NULL);

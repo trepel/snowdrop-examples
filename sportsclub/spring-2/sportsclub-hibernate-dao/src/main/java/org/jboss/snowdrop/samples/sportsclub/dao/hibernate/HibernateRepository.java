@@ -45,7 +45,10 @@ public abstract class HibernateRepository<T, I extends Serializable> implements 
    @SuppressWarnings("unchecked")
    public T save(T object)
    {
-      return (T) getCurrentSession().merge(object);
+       T mergedInstance = (T) getCurrentSession().merge(object);
+       //force a flush to refresh the id
+       getCurrentSession().flush();
+       return mergedInstance;
    }
 
    public void delete(T object)

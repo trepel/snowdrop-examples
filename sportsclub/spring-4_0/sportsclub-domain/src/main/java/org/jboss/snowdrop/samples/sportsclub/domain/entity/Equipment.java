@@ -20,8 +20,8 @@ public class Equipment implements Serializable
 	 */
 	private static final long serialVersionUID = 5618337838009710467L;
 
-@Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @Id
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
 
    private String name;

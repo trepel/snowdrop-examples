@@ -28,7 +28,7 @@ public class EquipmentFilter extends AbstractExtendedDataModelHelper implements 
 	 */
 	private static final long serialVersionUID = -2449681423406089713L;
 
-@Autowired
+   @Autowired
    private transient EquipmentService equipmentService;
 
    private Reservation reservation;

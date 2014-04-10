@@ -16,7 +16,6 @@
 
    <import resource="classpath*:infrastructure.xml"/>
 
-
    <tx:annotation-driven/>
     
    <aop:config>

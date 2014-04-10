@@ -18,7 +18,7 @@ public class Payment implements Serializable
 	 */
 	private static final long serialVersionUID = 1886963666174625949L;
 
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Id
    Long id;
 

@@ -11,7 +11,7 @@ public class PaymentNotification implements Serializable
 	 */
 	private static final long serialVersionUID = -8852636037793111702L;
 
-Long accountNumber;
+   Long accountNumber;
 
    BigDecimal amount;
 

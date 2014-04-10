@@ -11,6 +11,8 @@ import javax.persistence.Embeddable;
 public class Address implements Serializable
 {
 
+	private static final long serialVersionUID = -37287373749805935L;
+
    private String streetAddress;
 
    private String city;

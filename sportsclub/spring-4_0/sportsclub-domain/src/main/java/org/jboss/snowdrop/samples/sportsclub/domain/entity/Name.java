@@ -17,7 +17,7 @@ public class Name implements Serializable
 	 */
 	private static final long serialVersionUID = -2471594116346509511L;
 
-@Basic
+   @Basic
    private String firstName;
 
    @Basic

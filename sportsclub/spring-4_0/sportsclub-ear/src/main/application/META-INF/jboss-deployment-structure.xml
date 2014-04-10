@@ -1,9 +1,9 @@
- <jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.0">
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.0">
     <deployment>
         <dependencies>
             <module name="org.slf4j" export="true"/>
             <module name="org.javassist" export="true"/>
-          <module name="org.slf4j.jcl-over-slf4j" export="true"/>
+            <module name="org.slf4j.jcl-over-slf4j" export="true"/>
             <module name="org.springframework.spring" slot="snowdrop" export="true">
                 <exports>
                     <include path="META-INF**"/>
@@ -19,8 +19,8 @@
         </dependencies>
     </deployment>
     <sub-deployment name="sportsclub-invoicing-webmvc.war">
-           <dependencies>
-                <module name="org.hornetq.ra"/>
-           </dependencies>
-       </sub-deployment>
+        <dependencies>
+            <module name="org.hornetq.ra"/>
+        </dependencies>
+    </sub-deployment>
 </jboss-deployment-structure>

@@ -3,7 +3,7 @@
         <dependencies>
             <module name="org.slf4j" export="true"/>
             <module name="org.javassist" export="true"/>
-          <module name="org.slf4j.jcl-over-slf4j" export="true"/>
+            <module name="org.slf4j.jcl-over-slf4j" export="true"/>
             <module name="org.springframework.spring" slot="snowdrop" export="true">
                 <exports>
                     <include path="META-INF**"/>
@@ -14,16 +14,19 @@
                     <include path="org**"/>
                 </imports>
             </module>
+            <module name="org.hibernate" export="true"/>
             <module name="org.jboss.snowdrop" export="true"/>
         </dependencies>
+        <!--
         <exclusions>
             <module name="org.hibernate"/>
             <module name="org.dom4j"/>
         </exclusions>
+        -->
     </deployment>
     <sub-deployment name="sportsclub-invoicing-webmvc.war">
-           <dependencies>
-                <module name="org.hornetq.ra"/>
-           </dependencies>
-       </sub-deployment>
+        <dependencies>
+            <module name="org.hornetq.ra"/>
+        </dependencies>
+    </sub-deployment>
 </jboss-deployment-structure>

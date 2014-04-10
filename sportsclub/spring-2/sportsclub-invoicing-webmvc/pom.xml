@@ -9,6 +9,7 @@
     <artifactId>sportsclub-invoicing-webmvc</artifactId>
     <packaging>war</packaging>
     <name>Sports Club Invoicing Spring MVC Front-End</name>
+    <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
@@ -38,7 +39,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

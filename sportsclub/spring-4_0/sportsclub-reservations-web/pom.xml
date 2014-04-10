@@ -13,6 +13,7 @@
         <dependency>
             <groupId>org.jboss.snowdrop.samples.sportsclub.spring-4_0</groupId>
             <artifactId>sportsclub-domain</artifactId>
+            <version>${project.version}</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
@@ -82,7 +83,7 @@
             <artifactId>jboss-jstl-api_1.2_spec</artifactId>
             <scope>provided</scope>
         </dependency>
-        
+
         <dependency>
              <groupId>org.richfaces.core</groupId>
              <artifactId>richfaces-core-api</artifactId>
