@@ -17,7 +17,7 @@
    <import resource="classpath*:infrastructure.xml"/>
 
    <tx:annotation-driven/>
-    
+
    <aop:config>
        <aop:aspect ref="paymentAuditor">
            <aop:pointcut id="processingPayment" expression="execution(* *..PaymentProcessor+.*(..)) &amp;&amp; args(accountId, amount)"/>

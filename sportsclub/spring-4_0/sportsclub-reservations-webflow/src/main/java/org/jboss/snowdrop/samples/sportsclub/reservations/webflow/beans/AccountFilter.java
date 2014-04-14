@@ -1,6 +1,5 @@
 package org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -20,9 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class AccountFilter extends AbstractExtendedDataModelHelper implements Serializable
 {
-   /**
-	 * 
-	 */
 	private static final long serialVersionUID = -269525937840159759L;
 
    @Autowired

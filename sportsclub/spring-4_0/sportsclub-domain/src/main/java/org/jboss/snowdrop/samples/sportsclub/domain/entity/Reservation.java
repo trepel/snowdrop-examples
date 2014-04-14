@@ -18,9 +18,6 @@ import javax.persistence.ManyToOne;
 public class Reservation implements Serializable
 {
 
-   /**
-	 * 
-	 */
 	private static final long serialVersionUID = 4731610731461680181L;
 
    @Id

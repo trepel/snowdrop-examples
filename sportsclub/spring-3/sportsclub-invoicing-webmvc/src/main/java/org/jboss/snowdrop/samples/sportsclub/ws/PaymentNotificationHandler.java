@@ -1,7 +1,5 @@
 package org.jboss.snowdrop.samples.sportsclub.ws;
 
-import javax.xml.bind.JAXBElement;
-
 import org.jboss.snowdrop.samples.sportsclub.payment.PaymentProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;

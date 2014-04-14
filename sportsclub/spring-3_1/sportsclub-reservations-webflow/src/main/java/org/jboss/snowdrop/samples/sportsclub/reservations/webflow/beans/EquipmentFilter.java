@@ -11,11 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.faces.context.FacesContext;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.io.IOException;
 
 /**
  * @author <a href="mailto:lvlcek@redhat.com">Lukas Vlcek</a>

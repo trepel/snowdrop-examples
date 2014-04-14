@@ -1,6 +1,5 @@
 package org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;

@@ -18,8 +18,7 @@
             <module name="org.jboss.snowdrop" export="true"/>
         </dependencies>
     </deployment>
-<!--     <sub-deployment name="sportsclub-invoicing-webmvc.war"> -->
-    <sub-deployment>
+    <sub-deployment name="sportsclub-invoicing-webmvc.war">
         <dependencies>
             <module name="org.hornetq.ra"/>
         </dependencies>

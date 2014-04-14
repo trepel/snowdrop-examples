@@ -15,9 +15,8 @@
         </dependencies>
     </deployment>
     <sub-deployment name="sportsclub-invoicing-webmvc.war">
-           <dependencies>
-                <module name="org.hornetq.ra"/>
-                <module name="org.jaxen"/>
-           </dependencies>
-       </sub-deployment>
+        <dependencies>
+             <module name="org.hornetq.ra"/>
+        </dependencies>
+    </sub-deployment>
 </jboss-deployment-structure>

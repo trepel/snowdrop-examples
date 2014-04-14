@@ -14,15 +14,6 @@
         <dependency>
             <groupId>org.jboss.snowdrop.samples.sportsclub.spring-3_2</groupId>
             <artifactId>sportsclub-domain</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.snowdrop.samples.sportsclub.spring-3_2</groupId>
-            <artifactId>sportsclub-hibernate-dao</artifactId>
-            <version>${project.version}</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
@@ -42,22 +33,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jboss.snowdrop.samples.sportsclub.spring-3_2</groupId>
-            <artifactId>sportsclub-test-infrastructure</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.snowdrop.samples.sportsclub.spring-3_2</groupId>
-            <artifactId>sportsclub-staticwebcontent</artifactId>
-            <version>${project.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <artifactId>spring-beans</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -68,20 +45,8 @@
         </dependency>
         
         <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.jboss.spec.javax.faces</groupId>
             <artifactId>jboss-jsf-api_2.1_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.spec.javax.servlet.jstl</groupId>
-            <artifactId>jboss-jstl-api_1.2_spec</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -127,12 +92,6 @@
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>

@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.io.IOException;
 
 /**
  * @author <a href="mailto:lvlcek@redhat.com">Lukas Vlcek</a>

@@ -14,9 +14,6 @@ import org.jboss.snowdrop.samples.sportsclub.utils.DateUtils;
 @Embeddable
 public class TimeInterval implements Serializable
 {
-   /**
-	 * 
-	 */
 	private static final long serialVersionUID = -8477277838740499216L;
 
    public static final TimeZone TIME_ZONE = TimeZone.getTimeZone("EST");

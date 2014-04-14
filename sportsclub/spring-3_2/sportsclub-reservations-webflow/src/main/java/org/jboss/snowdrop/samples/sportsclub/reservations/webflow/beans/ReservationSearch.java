@@ -9,7 +9,6 @@ import org.jboss.snowdrop.samples.sportsclub.domain.entity.Equipment;
 import org.jboss.snowdrop.samples.sportsclub.service.ReservationService;
 
 import javax.faces.context.FacesContext;
-import java.io.IOException;
 import java.util.*;
 
 /**

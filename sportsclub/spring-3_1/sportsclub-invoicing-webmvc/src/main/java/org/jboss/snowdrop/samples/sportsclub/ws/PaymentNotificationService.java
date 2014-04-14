@@ -3,7 +3,6 @@ package org.jboss.snowdrop.samples.sportsclub.ws;
 import javax.annotation.PostConstruct;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import javax.jws.WebResult;
 import javax.jws.WebService;
 import java.math.BigDecimal;
 

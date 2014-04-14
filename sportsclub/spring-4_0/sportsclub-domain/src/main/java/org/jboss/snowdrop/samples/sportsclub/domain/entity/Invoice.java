@@ -17,9 +17,6 @@ import java.util.Date;
 public class Invoice implements Serializable
 {
 
-   /**
-	 * 
-	 */
 	private static final long serialVersionUID = 8291962316820082758L;
 
    @Id

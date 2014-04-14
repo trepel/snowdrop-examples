@@ -12,9 +12,6 @@ import javax.persistence.Embeddable;
 public class Name implements Serializable
 {
 
-   /**
-	 * 
-	 */
 	private static final long serialVersionUID = -2471594116346509511L;
 
    @Basic
