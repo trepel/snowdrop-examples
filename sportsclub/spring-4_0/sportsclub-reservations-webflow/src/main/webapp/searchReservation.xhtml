@@ -18,7 +18,7 @@
                                datePattern="d/M/yyyy HH:mm"
                                showApplyButton="true"
                                locale="#{reservationSearch.reservationSearchOptions.locale}">
-                    <a4j:ajax event="change" render="searchResults"/>
+                    <a4j:ajax event="change" render="searchResults" execute="@this" listener="#{reservationSearch.refreshCount}"/>
                 </rich:calendar>
                 to:
                 <rich:calendar id="to"
@@ -26,7 +26,7 @@
                                datePattern="d/M/yyyy HH:mm"
                                showApplyButton="true"
                                locale="#{reservationSearch.reservationSearchOptions.locale}">
-                    <a4j:ajax event="change" render="searchResults"/>
+                    <a4j:ajax event="change" render="searchResults" execute="@this" listener="#{reservationSearch.refreshCount}"/>
                 </rich:calendar>
                 <br/>
                 <table>
@@ -39,7 +39,7 @@
                                                   value="#{reservationSearch.reservationSearchOptions.selectedEquipmentTypes}"
                                                   layout="lineDirection" converter="#{equipmentTypeConverter}">
                                 <f:selectItems value="#{referenceData.equipmentTypes}"/>
-                                <a4j:ajax event="change" render="searchResults"/>
+                                <a4j:ajax event="change" render="searchResults" execute="@this" listener="#{reservationSearch.refreshCount}"/>
                             </h:selectManyCheckbox>
                         </td>
                     </tr>
