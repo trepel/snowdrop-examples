@@ -19,13 +19,21 @@
     </on-start>
 
     <view-state id="selectAccount">
-        <transition on="next" to="chooseDateAndEquipment"/>
+        <transition on="next" to="isAccountSelected"/>
     </view-state>
 
+    <decision-state id="isAccountSelected">
+        <if test="flowScope.reservation.account != null" then="chooseDateAndEquipment" else="selectAccount"/>
+    </decision-state>
+
     <view-state id="chooseDateAndEquipment">
-        <transition on="next" to="confirmReservation"/>
+        <transition on="next" to="isEquipmentSelected"/>
         <transition on="previous" to="selectAccount"/>
     </view-state>
+
+    <decision-state id="isEquipmentSelected">
+        <if test="flowScope.reservation.equipment != null" then="confirmReservation" else="chooseDateAndEquipment"/>
+    </decision-state>
 
     <view-state id="confirmReservation">
        <transition on="next" to="reservationConfirmed">
