@@ -23,7 +23,7 @@
         <jboss-el.version>1.0_02.CR6</jboss-el.version>
         <slf4j.version>1.5.8</slf4j.version>
         <junit.version>4.8.2</junit.version>
-        <org.jboss.bom.eap.version>6.2.0.GA</org.jboss.bom.eap.version>
+        <org.jboss.bom.eap.version>6.2.0-redhat-1</org.jboss.bom.eap.version>
         <snowdrop.version>3.1.2-SNAPSHOT</snowdrop.version>
         <spring.version>2.5.6.SEC03</spring.version>
         <spring-security.version>2.0.7.RELEASE</spring-security.version>
