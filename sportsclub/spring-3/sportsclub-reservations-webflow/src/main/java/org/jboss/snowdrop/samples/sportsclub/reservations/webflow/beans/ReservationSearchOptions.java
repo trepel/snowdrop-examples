@@ -5,7 +5,7 @@ import org.jboss.snowdrop.samples.sportsclub.service.EquipmentService;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
@@ -23,7 +23,11 @@ public class ReservationSearchOptions
    public void init()
    {
       locale = Locale.getDefault();
-      selectedEquipmentTypes = Arrays.asList(getEquipmentService().getEquipmentTypes());
+      selectedEquipmentTypes = new ArrayList<EquipmentType>();
+      for (EquipmentType et : getEquipmentService().getEquipmentTypes()) 
+      {
+         selectedEquipmentTypes.add(et);
+      }
    }
 
    public Locale getLocale()
