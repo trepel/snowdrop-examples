@@ -244,38 +244,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jboss.snowdrop</groupId>
-            <artifactId>snowdrop-vfs</artifactId>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>aopalliance</groupId>
-                    <artifactId>aopalliance</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-aop</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-beans</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-expression</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-context</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
             <artifactId>jboss-ejb-api_3.1_spec</artifactId>
             <scope>provided</scope>
@@ -390,55 +358,13 @@
         </dependency>
     </dependencies>
 
-    <profiles>
+     <profiles>
         <profile>
             <id>messaging</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <dependencies>
-                <dependency>
-                    <groupId>org.jboss.snowdrop</groupId>
-                    <artifactId>snowdrop-namespace</artifactId>
-                    <exclusions>
-                        <exclusion> 
-                            <groupId>org.springframework.ws</groupId> 
-                            <artifactId>spring-oxm</artifactId> 
-                        </exclusion> 
-                        <exclusion> 
-                            <groupId>org.springframework</groupId> 
-                            <artifactId>spring-aop</artifactId> 
-                        </exclusion> 
-                        <exclusion> 
-                            <groupId>org.springframework</groupId> 
-                            <artifactId>spring-expression</artifactId> 
-                        </exclusion> 
-                        <exclusion> 
-                            <groupId>org.springframework</groupId> 
-                            <artifactId>spring-beans</artifactId> 
-                        </exclusion> 
-                        <exclusion> 
-                            <groupId>org.springframework</groupId> 
-                            <artifactId>spring-core</artifactId> 
-                        </exclusion> 
-                        <exclusion> 
-                            <groupId>org.springframework</groupId> 
-                            <artifactId>spring-context</artifactId> 
-                        </exclusion> 
-                        <exclusion> 
-                            <groupId>org.springframework</groupId> 
-                            <artifactId>spring-context-support</artifactId> 
-                        </exclusion> 
-                        <exclusion> 
-                            <groupId>commons-logging</groupId> 
-                            <artifactId>commons-logging</artifactId> 
-                        </exclusion> 
-                        <exclusion> 
-                            <groupId>aopalliance</groupId> 
-                            <artifactId>aopalliance</artifactId> 
-                        </exclusion> 
-                    </exclusions>
-                </dependency>
             </dependencies>
             <build>
                 <plugins>

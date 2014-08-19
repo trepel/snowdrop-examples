@@ -1,7 +1,7 @@
 <jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
     <deployment>
         <dependencies>
-            <module name="org.springframework.spring" slot="snowdrop" export="true">
+            <module name="org.springframework.spring" slot="main" export="true" annotations="true">
                 <exports>
                     <include path="META-INF**"/>
                     <include path="org**"/>
@@ -11,7 +11,6 @@
                     <include path="org**"/>
                 </imports>
             </module>
-            <module name="org.jboss.snowdrop" export="true"/>
         </dependencies>
     </deployment>
     <sub-deployment name="sportsclub-invoicing-webmvc.war">

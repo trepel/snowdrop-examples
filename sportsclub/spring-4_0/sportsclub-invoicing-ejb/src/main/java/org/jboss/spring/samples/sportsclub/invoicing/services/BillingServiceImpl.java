@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 
-import org.jboss.annotation.spring.Spring;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Account;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Balance;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Invoice;
@@ -14,19 +13,20 @@ import org.jboss.snowdrop.samples.sportsclub.domain.entity.Payment;
 import org.jboss.snowdrop.samples.sportsclub.domain.repository.AccountRepository;
 import org.jboss.snowdrop.samples.sportsclub.domain.repository.InvoiceRepository;
 import org.jboss.snowdrop.samples.sportsclub.domain.repository.PaymentRepository;
-import org.jboss.spring.callback.SpringLifecycleInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 
 @Stateless
-@Interceptors(SpringLifecycleInterceptor.class)
+@Interceptors(SpringBeanAutowiringInterceptor.class)
 public class BillingServiceImpl implements BillingService
 {
-   @Spring(bean = "invoiceRepository", jndiName = "SpringDao")
+   @Autowired
    private InvoiceRepository invoiceRepository;
 
-   @Spring(bean = "accountRepository", jndiName = "SpringDao")
+   @Autowired
    private AccountRepository accountRepository;
 
-   @Spring(bean = "paymentRepository", jndiName = "SpringDao")
+   @Autowired
    private PaymentRepository paymentRepository;
 
    public void setPaymentRepository(PaymentRepository paymentRepository)
@@ -49,7 +49,7 @@ public class BillingServiceImpl implements BillingService
       Invoice invoice = new Invoice();
       invoice.setAccount(account);
       invoice.setAmount(account.getFeePerBillingPeriod());
-      Date date = new Date();       
+      Date date = new Date();
       invoice.setIssueDate(date);
       invoice.setBillingPeriod(account.getBillingPeriodFor(date));
       invoice = invoiceRepository.save(invoice);

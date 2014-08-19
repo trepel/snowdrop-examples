@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 
-import org.jboss.annotation.spring.Spring;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Account;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.BillingType;
 import org.jboss.snowdrop.samples.sportsclub.domain.entity.Person;
@@ -16,20 +15,22 @@ import org.jboss.snowdrop.samples.sportsclub.domain.repository.criteria.AccountS
 import org.jboss.snowdrop.samples.sportsclub.domain.repository.criteria.InvoiceSearchCriteria;
 import org.jboss.snowdrop.samples.sportsclub.domain.repository.criteria.PersonSearchCriteria;
 import org.jboss.snowdrop.samples.sportsclub.domain.repository.criteria.Range;
-import org.jboss.spring.callback.SpringLifecycleInterceptor;
+import org.springframework.beans.factory.access.el.SpringBeanELResolver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 
 /**
  * @author <a href="mailto:mariusb@redhat.com">Marius Bogoevici</a>
  */
 @Stateless
-@Interceptors(SpringLifecycleInterceptor.class)
+@Interceptors(SpringBeanAutowiringInterceptor.class)
 public class SubscriptionServiceImpl implements SubscriptionService
 {
 
-   @Spring(bean = "accountRepository", jndiName = "SpringDao")
+   @Autowired
    private AccountRepository accountRepository;
 
-   @Spring(bean = "membershipRepository", jndiName = "SpringDao")
+   @Autowired
    private MembershipRepository membershipRepository;
 
    public List<Account> findAccountsBySubscriberName(String name, int minIndex, int maxIndex)
