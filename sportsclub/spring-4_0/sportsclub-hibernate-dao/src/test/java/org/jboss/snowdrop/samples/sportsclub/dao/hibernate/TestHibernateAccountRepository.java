@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @ContextConfiguration(locations = {"classpath:test-db-infrastructure.xml",
       "classpath:test-hibernate-infrastructure.xml",
-      "classpath:dao-context.xml"})
+      "classpath:test-dao-context.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 public class TestHibernateAccountRepository

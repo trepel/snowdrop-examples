@@ -13,8 +13,8 @@
         class="org.springframework.context.support.ClassPathXmlApplicationContext">
         <constructor-arg>
             <list>
-                <value>classpath*:infrastructure.xml</value>
-                <value>classpath*:dao-context.xml</value>
+                <value>infrastructure.xml</value>
+                <value>dao-context.xml</value>
             </list>
         </constructor-arg>
     </bean>

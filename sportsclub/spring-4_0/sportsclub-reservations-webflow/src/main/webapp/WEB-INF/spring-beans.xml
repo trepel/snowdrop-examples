@@ -9,8 +9,6 @@
 
     <import resource="classpath*:reservations-service.xml"/>
 
-    <import resource="classpath*:infrastructure.xml"/>
-
     <bean id="reservationCreate" class="org.jboss.snowdrop.samples.sportsclub.reservations.webflow.beans.ReservationCreate"/>
 
 
